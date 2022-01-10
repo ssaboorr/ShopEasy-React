@@ -1,11 +1,14 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Heading } from "@chakra-ui/react";
+import Header from './components/Header'
+import Footer from './components/Footer'
+
 
 const App = () => {
   return (
     <ChakraProvider>
-      <div>
-        <h1>App</h1>
-      </div>
+     <Header/>
+     <div style={{height:'500px'}}></div>
+     <Footer/>
     </ChakraProvider>
   );
 };
