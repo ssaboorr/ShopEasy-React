@@ -6,8 +6,6 @@ import {
   Box,
   Icon,
   useDisclosure,
-  SlideFade,
-  Button,
   Slide,
 } from "@chakra-ui/react";
 import {
@@ -26,7 +24,7 @@ const MenuItem = ({ children, url }) => {
       href={url}
       fontSize="sm"
       letterSpacing="wide"
-      color="grayAlpha.600"
+      color="grayAlpha.800"
       fontWeight="bold"
       textTransform="uppercase"
       m="2"
@@ -46,14 +44,9 @@ function SlideEx() {
     <>
       <Icon onClick={onToggle} as={HiMenuAlt3} color="black" w="6" h="6" />
 
-      <Slide
-        direction="bottom"
-        in={isOpen}
-        style={{ zIndex: 10 }}
-       
-      >
-        <Box p="40px" color="white" mt="4" bg="gray.800" shadow="md">
-          <Box width={{ base: "full", md: "auto" }}  alignItems="center">
+      <Slide direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
+        <Box p="40px" color="white" mt="4" bgGradient="linear(to-r, gray.800, gray.200)" shadow="md">
+          <Box width={{ base: "full", md: "auto" }} alignItems="center">
             <MenuItem url="/">
               <Flex alignItems="center" justifyContent="center" m="2">
                 <Icon w="4" h="4" mr="1" as={HiOutlineUser} />
@@ -98,7 +91,7 @@ const Header = () => {
       px="6"
       // bgColor="gray.800"
       // bgColor={{bgColor:'red'}}
-      bgGradient="linear(to-r, gray.800, gray.200)"
+      bgGradient="linear(to-r, gray.800,gray.500,white)"
       w="100%"
       top="0"
       zIndex="2"
@@ -158,17 +151,7 @@ const Header = () => {
             SignIn
           </Flex>
         </MenuItem>
-        <MenuItem>
-          <Flex alignItems="center" justifyContent="center" m="2">
-            <Icon
-              onClick={() => setLight(!light)}
-              w="4"
-              h="4"
-              mr="1"
-              as={BsMoonFill}
-            />
-          </Flex>
-        </MenuItem>
+        
       </Box>
     </Flex>
   );
