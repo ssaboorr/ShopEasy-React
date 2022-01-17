@@ -12,7 +12,6 @@ const Product = ({ product }) => {
     >
       <Box
         mt="50px"
-        border="1px solid black"
         p="2"
         mb="2"
         mx="3"

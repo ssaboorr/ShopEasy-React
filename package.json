@@ -1,0 +1,23 @@
+{
+  "name": "shopeasy-react",
+  "version": "1.0.0",
+  "description": "Full stack Ecommerce App built",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssaboorr/ShopEasy-React.git"
+  },
+  "keywords": [],
+  "author": "Abdus Saboor Ansari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssaboorr/ShopEasy-React/issues"
+  },
+  "homepage": "https://github.com/ssaboorr/ShopEasy-React#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}

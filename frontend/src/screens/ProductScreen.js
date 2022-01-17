@@ -7,7 +7,10 @@ import {
   Heading,
   Text,
   Divider,
+  Icon
 } from "@chakra-ui/react";
+
+import { BsArrowLeftCircle } from "react-icons/bs";
 
 import Rating from "../components/Ratings";
 import products from "../products";
@@ -18,12 +21,15 @@ const ProductScreen = () => {
   return (
     <>
       <Flex mb="5">
-        <Button my="2" mx="3" as={RouterLink} to="/" colorScheme="gray">
-          Go back
-        </Button>
+        <Button
+          my="2"
+          mx="3"
+          as={RouterLink}
+          to="/"
+        ><Icon w="4" h="4" as={BsArrowLeftCircle}/></Button>
       </Flex>
       {/* <Grid templateColumns="5fr 4fr 3fr" gap="10"> */}
-      <Grid templateColumns={{sm:'2fr',lg:'5fr 4fr 3fr'}}  gap="10">
+      <Grid templateColumns={{ sm: "2fr", lg: "5fr 4fr 3fr" }} gap="10">
         {/* Column one */}
         <Image src={product.image} alt={product.name} />
         {/* Column two */}
