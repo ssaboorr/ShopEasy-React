@@ -1,3 +1,5 @@
+import { Link as RouterLink } from "react-router-dom";
+
 import { useState } from "react";
 import {
   Flex,
@@ -16,11 +18,11 @@ import {
 } from "react-icons/hi";
 
 import { GoSignIn } from "react-icons/go";
-import { BsMoonFill, BsMoon } from "react-icons/bs";
 
 const MenuItem = ({ children, url }) => {
   return (
     <Link
+      as={RouterLink}
       href={url}
       fontSize="sm"
       letterSpacing="wide"
@@ -103,6 +105,7 @@ const Header = () => {
           letterSpacing="md"
         >
           <Link
+            as={RouterLink}
             href="/"
             color="gray.200"
             _hover={{ color: "gray.500", textDecor: "none" }}
