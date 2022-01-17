@@ -23,7 +23,7 @@ const MenuItem = ({ children, url }) => {
   return (
     <Link
       as={RouterLink}
-      href={url}
+      to={url}
       fontSize="sm"
       letterSpacing="wide"
       color="gray.200"
@@ -106,7 +106,7 @@ const Header = () => {
         >
           <Link
             as={RouterLink}
-            href="/"
+            to="/"
             color="gray.200"
             _hover={{ color: "gray.500", textDecor: "none" }}
           >

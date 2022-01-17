@@ -7,7 +7,7 @@ const Product = ({ product }) => {
   return (
     <Link
       as={RouterLink}
-      href={`/product/${product._id}`}
+      to={`/product/${product._id}`}
       _hover={{ textDecor: "none" }}
     >
       <Box
