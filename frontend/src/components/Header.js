@@ -24,12 +24,12 @@ const MenuItem = ({ children, url }) => {
       href={url}
       fontSize="sm"
       letterSpacing="wide"
-      color="grayAlpha.800"
+      color="gray.200"
       fontWeight="bold"
       textTransform="uppercase"
       m="2"
       display="block"
-      _hover={{ color: "whiteAlpha.800" }}
+      _hover={{ color: "whiteAlpha.500" }}
       mt={{ base: "4", md: "0" }}
     >
       {children}
@@ -45,7 +45,7 @@ function SlideEx() {
       <Icon onClick={onToggle} as={HiMenuAlt3} color="black" w="6" h="6" />
 
       <Slide direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
-        <Box p="40px" color="white" mt="4" bgGradient="linear(to-r, gray.800, gray.200)" shadow="md">
+        <Box p="40px" color="white" mt="4" bgColor="gray.800" shadow="md">
           <Box width={{ base: "full", md: "auto" }} alignItems="center">
             <MenuItem url="/">
               <Flex alignItems="center" justifyContent="center" m="2">
@@ -80,7 +80,6 @@ function SlideEx() {
 
 const Header = () => {
   const [show, setShow] = useState(false);
-  const [light, setLight] = useState(true);
   return (
     <Flex
       as="header"
@@ -89,9 +88,7 @@ const Header = () => {
       wrap="wrap"
       py="6"
       px="6"
-      // bgColor="gray.800"
-      // bgColor={{bgColor:'red'}}
-      bgGradient="linear(to-r, gray.800,gray.500,white)"
+      bgColor="gray.800"
       w="100%"
       top="0"
       zIndex="2"
@@ -151,7 +148,6 @@ const Header = () => {
             SignIn
           </Flex>
         </MenuItem>
-        
       </Box>
     </Flex>
   );
