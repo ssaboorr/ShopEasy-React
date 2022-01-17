@@ -7,26 +7,33 @@ import {
   Heading,
   Text,
   Divider,
-  Icon
+  Icon,
 } from "@chakra-ui/react";
 
+import { useState, useEffect } from "react";
 import { BsArrowLeftCircle } from "react-icons/bs";
 
 import Rating from "../components/Ratings";
-import products from "../products";
+import axios from "axios";
 
 const ProductScreen = () => {
   const { id } = useParams();
-  const product = products.find((product) => product._id === +id);
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${id}`);
+      setProduct(data);
+    };
+
+    fetchProduct();
+  }, []);
   return (
     <>
       <Flex mb="5">
-        <Button
-          my="2"
-          mx="3"
-          as={RouterLink}
-          to="/"
-        ><Icon w="4" h="4" as={BsArrowLeftCircle}/></Button>
+        <Button my="2" mx="3" as={RouterLink} to="/">
+          <Icon w="4" h="4" as={BsArrowLeftCircle} />
+        </Button>
       </Flex>
       {/* <Grid templateColumns="5fr 4fr 3fr" gap="10"> */}
       <Grid templateColumns={{ sm: "2fr", lg: "5fr 4fr 3fr" }} gap="10">

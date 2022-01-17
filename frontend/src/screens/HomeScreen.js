@@ -1,8 +1,19 @@
-import { Box, Flex, Grid, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
+import {useState,useEffect} from 'react'
 import Product from "../components/Products";
-import products from "../products";
+import axios from 'axios'
 
 const HomeScreen = () => {
+  const [products,setProduct] = useState([])
+
+useEffect(()=>{
+  const fetchProduct = async () => {
+    const {data} = await axios.get('/api/products')
+    setProduct(data)
+  };
+  fetchProduct()
+},[])
+
   return (
     <>
       <Flex
