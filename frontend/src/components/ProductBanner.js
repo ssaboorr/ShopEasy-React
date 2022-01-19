@@ -1,0 +1,53 @@
+import { Box, Divider, Flex, Heading } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import Product from "./Products";
+import axios from "axios";
+
+export const Banner1 = ({ type }) => {
+  const [products, setProduct] = useState([""]);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${type}`);
+      setProduct(data);
+    };
+
+    fetchProduct();
+  }, []);
+
+  let product = products.filter((prod) => prod.rating >= 4.5);
+
+  return (
+    <>
+      <Box display="flex" flexDirection="row" gap="5" justify="flex-start">
+        <Heading as="h2" fontSize="3xl">
+          Trending Products
+        </Heading>
+      </Box>
+      <Flex
+        display="flex"
+        flexDirection="row"
+        flexWrap="wrap"
+        gap="5"
+        m="4"
+        p="4"
+        alignItems="center"
+        justify="center"
+      >
+        {product.map((prod) => (
+          <Product key={prod._id} product={prod} />
+        ))}
+      </Flex>
+
+  
+    </>
+  );
+};
+
+export const Banner2 = ({ type }) => {
+  return <></>;
+};
+
+export const Banner3 = ({ type }) => {
+  return <></>;
+};

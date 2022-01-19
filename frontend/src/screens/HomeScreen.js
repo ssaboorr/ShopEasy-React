@@ -1,44 +1,21 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Divider, Flex, Heading } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import Products from "../components/Products";
 import axios from "axios";
-// import fashion from "../../../backend/data/fashion";
-
+import { Banner1 } from "../components/ProductBanner";
 const HomeScreen = () => {
-  const [products, setProduct] = useState([""]);
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const fashion = await axios.get("/api/products/fashion");
-
-      setProduct(fashion.data);
-    };
-
-    fetchProduct();
-  }, []);
-
-  console.log(products);
-
   return (
     <>
-      <Flex mt="20px">
-        <Box>
-          <Heading as="h2" mb="8" mt="3" fontSize="3xl">
-            Trending Products
-          </Heading>
-
-          <Flex
-            display="flex"
-            direction="row"
-            wrap="wrap"
-            justifyContent="center"
-            gap="5"
-          >
-            {products.map((product) => (
-              <Products type="fashion" key={product._id} product={product} />
-            ))}
-          </Flex>
-        </Box>
+      <Flex display="flex" flexDirection="column" wrap="wrap">
+        <Flex
+          p="5"
+          m="5"
+          display="flex"
+          direction="column"
+          justify="flex-start"
+        >
+          <Banner1 type="fashion" />
+        </Flex>
       </Flex>
     </>
   );
