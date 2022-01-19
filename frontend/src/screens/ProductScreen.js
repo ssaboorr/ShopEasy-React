@@ -16,13 +16,13 @@ import { BsArrowLeftCircle } from "react-icons/bs";
 import Rating from "../components/Ratings";
 import axios from "axios";
 
-const ProductScreen = () => {
+const ProductScreen = ({type}) => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${id}`);
+      const { data } = await axios.get(`/api/products/${type}/${id}`);
       setProduct(data);
     };
 

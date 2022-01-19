@@ -1,32 +1,32 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import Products from "../components/Products";
+import { Flex, Heading, Box } from "@chakra-ui/react";
 import axios from "axios";
-// import fashion from "../../../backend/data/fashion";
+import { useEffect, useState } from "react";
+import Products from "../components/Products";
 
-const HomeScreen = () => {
-  const [products, setProduct] = useState([""]);
+const ProductDisplayScreen = ({type}) => {
+  const [products, setproducts] = useState(['']);
+
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const fashion = await axios.get("/api/products/fashion");
+      const { data } = await axios.get(`/api/products/${type}`);
+      setproducts(data)
 
-      setProduct(fashion.data);
     };
 
     fetchProduct();
   }, []);
 
-  console.log(products);
+ 
 
   return (
     <>
       <Flex mt="20px">
         <Box>
           <Heading as="h2" mb="8" mt="3" fontSize="3xl">
-            Trending Products
+            Shoes
           </Heading>
-
+          
           <Flex
             display="flex"
             direction="row"
@@ -35,8 +35,9 @@ const HomeScreen = () => {
             gap="5"
           >
             {products.map((product) => (
-              <Products type="fashion" key={product._id} product={product} />
+              <Products type={type} key={product._id} product={product} />
             ))}
+         
           </Flex>
         </Box>
       </Flex>
@@ -44,4 +45,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default ProductDisplayScreen;
