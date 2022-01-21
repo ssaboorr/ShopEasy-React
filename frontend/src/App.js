@@ -26,11 +26,22 @@ const App = () => {
             path="/product/fashion/:id"
             element={<ProductScreen type="fashion" />}
           />
+           <Route
+            path="/product/phone/:id"
+            element={<ProductScreen type="phone" />}
+          />
 
-          <Route path="/product-display" element={<ProductDisplayScreen />} />
           <Route
             path="/footwear"
             element={<ProductDisplayScreen type="footwear" />}
+          />
+           <Route
+            path="/fashion"
+            element={<ProductDisplayScreen type="fashion" />}
+          />
+          <Route
+            path="/phone"
+            element={<ProductDisplayScreen type="phone" />}
           />
         </Routes>
       </Flex>

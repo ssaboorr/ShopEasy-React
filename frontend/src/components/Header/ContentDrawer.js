@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Drawer,
   DrawerBody,
@@ -8,16 +9,13 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Flex,
-  Box,
   Icon,
   useDisclosure,
   Button,
-  Input,
   Text,
   Divider,
   Heading,
   Link,
-  flexbox,
 } from "@chakra-ui/react";
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
 
@@ -62,8 +60,10 @@ function ContenDrawer() {
               Fashion
             </Heading>
             <Divider bgColor="gray.800" />
-            <Flex mt="5"  display="flex" flexDirection="column">
-            <Link my="2">Top-wear</Link>
+            <Flex mt="5" display="flex" flexDirection="column">
+              <Link as={RouterLink} to="/fashion" my="2">
+                Top-wear
+              </Link>
               <Link my="2">Bottom-wear</Link>
               <Link my="2">Formals</Link>
             </Flex>
@@ -72,8 +72,10 @@ function ContenDrawer() {
               Electronics
             </Heading>
             <Divider bgColor="red" />
-            <Flex mt="5"  display="flex" flexDirection="column">
-              <Link my="2">Mobiles</Link>
+            <Flex mt="5" display="flex" flexDirection="column">
+              <Link as={RouterLink} to="/phone" my="2">
+                Mobiles
+              </Link>
               <Link my="2">Laptops</Link>
               <Link my="2">Gaming</Link>
             </Flex>
@@ -82,10 +84,12 @@ function ContenDrawer() {
               Shoes
             </Heading>
             <Divider bgColor="gray.800" />
-            <Flex mt="5"  display="flex" flexDirection="column">
-            <Link my="2">Sports</Link>
+            <Flex mt="5" display="flex" flexDirection="column">
+              <Link my="2">Sports</Link>
               <Link my="2">Formal</Link>
-              <Link my="2">Casuals</Link>
+              <Link as={RouterLink} to="/footwear" my="2">
+                Casuals
+              </Link>
             </Flex>
           </DrawerBody>
 

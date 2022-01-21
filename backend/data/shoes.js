@@ -1,7 +1,7 @@
 const shoes = [
     {
       _id: 1,
-      name: "Women Floral Print Lounge T-Shirt",
+      name: "Adidas Running Shoes",
       image: "/images/3mc-vulc-shoes.jpg",
       description:
         "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
@@ -14,7 +14,7 @@ const shoes = [
     },
     {
       _id: 2,
-      name: "Pack of 2 Round Neck T-Shirts",
+      name: "Manchester United Boost",
       image: "/images/manchester-united-zx-2k-boost-2.0-shoes.jpg",
       description:
         "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
@@ -27,7 +27,7 @@ const shoes = [
     },
     {
       _id: 3,
-      name: "Native Youth",
+      name: "Adidas Multix Shoes",
       image: "/images/multix-shoes.jpg",
       description:
         "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
@@ -40,7 +40,7 @@ const shoes = [
     },
     {
       _id: 4,
-      name: "Print Crop Lounge Top",
+      name:"Ny 90 Stripes Shoes",
       image: "/images/ny-90-stripes-shoes.jpg",
       description:
         "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
@@ -53,7 +53,7 @@ const shoes = [
     },
     {
       _id: 5,
-      name: "Crochet Detail Lightweight Top",
+      name: "Adidas SuperStar",
       image: "/images/superstar-shoes.jpg",
       description:
         "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
@@ -66,7 +66,7 @@ const shoes = [
     },
     {
       _id: 6,
-      name: "Juventus Henley Neck Jersey",
+      name: "ZX 1k Boost",
       image: "/images/zx-1k-boost-shoes.jpg",
       description:
         "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
@@ -79,7 +79,7 @@ const shoes = [
     },
     {
       _id: 7,
-      name: "Mavericks Drake Tank Top",
+      name: "AX 2k Boost",
       image: "/images/zx-2k-boost-2.0-shoes.jpg",
       description:
         "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
@@ -92,7 +92,7 @@ const shoes = [
     },
     {
       _id: 8,
-      name: "Printed Polo Collar T-shirt",
+      name: "Adidas Ultra Boost",
       image: "/images/zx-2k-boost-2.0-shoes.jpg",
       description:
         "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",

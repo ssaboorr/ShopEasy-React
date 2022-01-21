@@ -15,7 +15,8 @@ const ProductDisplayScreen = ({type}) => {
     };
 
     fetchProduct();
-  }, []);
+  }, [type]);
+
 
  
 
@@ -23,8 +24,8 @@ const ProductDisplayScreen = ({type}) => {
     <>
       <Flex mt="20px">
         <Box>
-          <Heading as="h2" mb="8" mt="3" fontSize="3xl">
-            Shoes
+          <Heading textTransform="uppercase" as="h2" mb="8" mt="3" fontSize="3xl">
+            {type}
           </Heading>
           
           <Flex

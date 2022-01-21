@@ -36,10 +36,10 @@ app.get('/api/products/phone',(req,res)=>{
 })
 
 
-app.get('/api/products/:id',(req,res)=>{
-    const product = products.find((product) => product._id === +req.params.id)
-    res.json(product)
-})
+// app.get('/api/products/:id',(req,res)=>{
+//     const product = products.find((product) => product._id === +req.params.id)
+//     res.json(product)
+// })
 
 app.get('/api/products/footwear/:id',(req,res)=> {
     const shoe = shoes.find((shoe) => shoe._id === +req.params.id)
@@ -51,10 +51,19 @@ app.get('/api/products/fashion/:id',(req,res) => {
     res.json(cloth)
 })
 
-
-app.get('/api/footwear',(req,res) => {
-    res.json(shoes)
+app.get('/api/products/phone/:id',(req,res) => {
+    const phones = phone.find((phone) => phone._id === +req.params.id )
+    res.json(phones)
 })
+
+
+// app.get('/api/footwear',(req,res) => {
+//     res.json(shoes)
+// })
+
+// app.get('/api/phone',(req,res)=>{
+//     res.json(phone)
+// })
 
 
 

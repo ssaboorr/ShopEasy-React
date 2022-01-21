@@ -30,22 +30,18 @@ const Content = () => {
         width={{ base: "full", md: "auto" }}
         alignItems="center"
       >
-        <MenuItem url="/product-display">
-          <Flex alignItems="center" justifyContent="center" m="2">
-            Today's Deal
-          </Flex>
-        </MenuItem>
+     
         <MenuItem  url="/footwear">
           <Flex alignItems="center" justifyContent="center" m="2">
             Footwear
           </Flex>
         </MenuItem>
-        <MenuItem color="gray.200" url="/">
+        <MenuItem  url="/phone">
           <Flex alignItems="center" justifyContent="center" m="2">
             Electronics
           </Flex>
         </MenuItem>
-        <MenuItem url="/">
+        <MenuItem url="/fashion">
           <Flex alignItems="center" justifyContent="center" m="2">
             Fashion
           </Flex>

@@ -1,8 +1,6 @@
 import { Box, Divider, Flex, Heading } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import Products from "../components/Products";
-import axios from "axios";
-import { Banner1 } from "../components/ProductBanner";
+
+import { Banner1,Banner2,Banner3,ImageBanner1 } from "../components/ProductBanner";
 const HomeScreen = () => {
   return (
     <>
@@ -15,6 +13,12 @@ const HomeScreen = () => {
           justify="flex-start"
         >
           <Banner1 type="fashion" />
+          <Divider/>
+          <Banner2 type="footwear" />
+          <Divider/>
+          <Banner3 type="phone"/>
+          {/* <ImageBanner1/> */}
+
         </Flex>
       </Flex>
     </>
