@@ -6,6 +6,8 @@ import footwear from './data/shoes.js'
 import connectDb from './config/db.js';
 import dotenv from 'dotenv'
 import shoes from './data/shoes.js';
+import colors from 'colors';
+
 
 dotenv.config();
 connectDb();
@@ -71,4 +73,4 @@ app.get('/api/products/phone/:id',(req,res) => {
 
 
 const PORT = process.env.PORT || 5001;
-app.listen(PORT,() => console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+app.listen(PORT,() => console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold))
