@@ -26,16 +26,17 @@ const App = () => {
             path="/product/fashion/:id"
             element={<ProductScreen type="fashion" />}
           />
-           <Route
+          <Route
             path="/product/phone/:id"
             element={<ProductScreen type="phone" />}
           />
+          <Route path="/product/:id" element={<ProductScreen />} />
 
           <Route
             path="/footwear"
             element={<ProductDisplayScreen type="footwear" />}
           />
-           <Route
+          <Route
             path="/fashion"
             element={<ProductDisplayScreen type="fashion" />}
           />

@@ -19,19 +19,24 @@ app.get('/',(req,res)=> {
     res.send("api is running")
 })
 
-app.use('/api/products',productRoutes)
 
-app.get('/api/products/fashion',(req,res)=> {
-    res.json(fashion)
-})
+// app.get('/fashion',productRoutes)
 
-app.get('/api/products/footwear',(req,res) => {
-    res.json(footwear)
-})
 
-app.get('/api/products/phone',(req,res)=>{
-    res.json(phone)
-})
+app.use('/api/product',productRoutes)
+
+
+// app.get('/api/products/fashion',(req,res)=> {
+//     res.json(fashion)
+// })
+
+// app.get('/api/products/footwear',(req,res) => {
+//     res.json(footwear)
+// })
+
+// app.get('/api/products/phone',(req,res)=>{
+//     res.json(phone)
+// })
 
 
 // app.get('/api/products/:id',(req,res)=>{

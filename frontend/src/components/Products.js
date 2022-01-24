@@ -8,7 +8,7 @@ const Product = ({ product,type }) => {
   return (
     <Link
       as={RouterLink}
-      to={`/product/${product_type}/${product._id}`}
+      to={`/product/${product._id}`}
       _hover={{ textDecor: "none" }}
     >
       <Box
@@ -19,7 +19,7 @@ const Product = ({ product,type }) => {
         maxW="sm"
         borderRadius="lg"
         overflow="hidden"
-        bgColor="white"
+        // bgColor="white"
         transition="all"
         _hover={{ shadow: "xl" }}
       >

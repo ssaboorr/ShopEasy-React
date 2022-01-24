@@ -3,31 +3,35 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Products from "../components/Products";
 
-const ProductDisplayScreen = ({type}) => {
-  const [products, setproducts] = useState(['']);
-
+const ProductDisplayScreen = ({ type }) => {
+  const [products, setproducts] = useState([""]);
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${type}`);
-      setproducts(data)
+      const { data } = await axios.get(`/api/product/`);
 
+      setproducts(data);
     };
 
     fetchProduct();
   }, [type]);
-
-
  
+let prod = products.filter(product => product.type === type)
 
   return (
     <>
       <Flex mt="20px">
         <Box>
-          <Heading textTransform="uppercase" as="h2" mb="8" mt="3" fontSize="3xl">
+          <Heading
+            textTransform="uppercase"
+            as="h2"
+            mb="8"
+            mt="3"
+            fontSize="3xl"
+          >
             {type}
           </Heading>
-          
+
           <Flex
             display="flex"
             direction="row"
@@ -35,10 +39,9 @@ const ProductDisplayScreen = ({type}) => {
             justifyContent="center"
             gap="5"
           >
-            {products.map((product) => (
+            {prod.map((product) => (
               <Products type={type} key={product._id} product={product} />
             ))}
-         
           </Flex>
         </Box>
       </Flex>

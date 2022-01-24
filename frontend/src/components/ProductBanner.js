@@ -8,14 +8,14 @@ export const Banner1 = ({ type }) => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${type}`);
+      const { data } = await axios.get(`/api/product/`);
       setProduct(data);
     };
 
     fetchProduct();
   }, []);
 
-  let product = products.filter((prod) => prod.rating >= 4.5);
+  let product = products.filter((prod) => prod.type === 'fashion' & prod.rating >= 4.5);
 
   return (
     <>
@@ -47,14 +47,14 @@ export const Banner2 = ({ type }) => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${type}`);
+      const { data } = await axios.get(`/api/product/`);
       setProduct(data);
     };
 
     fetchProduct();
   }, []);
 
-  let product = products.filter((prod) => prod.rating >= 4.5);
+  let product = products.filter((prod) => prod.type === 'footwear' & prod.rating >= 4.5);
 
   return (
     <>
@@ -85,13 +85,13 @@ export const Banner3 = ({ type }) => {
   const [products, setProduct] = useState([""]);
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${type}`);
+      const { data } = await axios.get(`/api/product/`);
       setProduct(data);
     };
     fetchProduct();
   }, []);
 
-  let product = products.filter((prod) => prod.rating >= 4.5);
+  let product = products.filter((prod) => prod.type === 'fashion' & prod.rating >= 4.5);
   return (
     <>
       <Box display="flex" flexDirection="row" gap="5" justify="flex-start">
