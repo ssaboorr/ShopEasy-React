@@ -7,6 +7,7 @@ import connectDb from './config/db.js';
 import dotenv from 'dotenv'
 import shoes from './data/shoes.js';
 import colors from 'colors';
+import productRoutes from './routes/productRoutes.js'
 
 
 dotenv.config();
@@ -14,18 +15,11 @@ connectDb();
 
 const app = express();
 
-// let fashion = products[0]
-// let footwear = products[1]
-// let phone = products[2]
-
 app.get('/',(req,res)=> {
     res.send("api is running")
 })
 
-app.get('/api/products',(req,res)=>{
-    res.json(products)
-})
-
+app.use('/api/products',productRoutes)
 
 app.get('/api/products/fashion',(req,res)=> {
     res.json(fashion)
