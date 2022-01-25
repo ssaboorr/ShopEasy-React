@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Products from "../components/Products";
 
-const ProductDisplayScreen = ({ type }) => {
+const ProductDisplayScreen = ({ category, type }) => {
   const [products, setproducts] = useState([""]);
 
   useEffect(() => {
@@ -14,9 +14,21 @@ const ProductDisplayScreen = ({ type }) => {
     };
 
     fetchProduct();
-  }, [type]);
- 
-let prod = products.filter(product => product.type === type)
+  }, [category]);
+
+  let prod = products.filter((product) => product.type === type);
+
+  if (category === "Mens Originals") {
+    prod = products.filter((product) => product.category === "Mens Originals");
+  } else if (category === "Women Originals") {
+    prod = products.filter((product) => product.category === "Women Originals");
+  } else if (category === "Kids Originals") {
+    prod = products.filter((product) => product.category === "Kids Originals");
+  } else if (type === "sports") {
+    prod = products.filter((product) => product.type === "sports");
+  } else if (type === "casuals") {
+    prod = products.filter((product) => product.type === "casuals");
+  }
 
   return (
     <>
@@ -27,9 +39,18 @@ let prod = products.filter(product => product.type === type)
             as="h2"
             mb="8"
             mt="3"
+            fontSize="4xl"
+          >
+            {category} 
+          </Heading>
+          <Heading
+            textTransform="uppercase"
+            as="h2"
+            mb="8"
+            mt="3"
             fontSize="3xl"
           >
-            {type}
+            {type} 
           </Heading>
 
           <Flex
@@ -40,7 +61,11 @@ let prod = products.filter(product => product.type === type)
             gap="5"
           >
             {prod.map((product) => (
-              <Products type={type} key={product._id} product={product} />
+              <Products
+                category={category}
+                key={product._id}
+                product={product}
+              />
             ))}
           </Flex>
         </Box>

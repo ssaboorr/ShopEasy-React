@@ -2,6 +2,7 @@ import { Flex, Box, Icon, Text } from "@chakra-ui/react";
 import { MenuItem } from "./MenuItem";
 import { Children, useState } from "react";
 import ContentDrawer from "./ContentDrawer";
+import MenuContent from "./ContentMenu";
 
 const Content = () => {
   const [show, setShow] = useState(false);
@@ -12,7 +13,7 @@ const Content = () => {
       py="5"
       as="header"
       //   bgColor="red.700"
-      bgColor={{md:"gray.800",base:"gray.200",sm:"gray.200"}}
+      bgColor={{ md: "gray.800", base: "gray.200", sm: "gray.200" }}
       display="flex"
       flexDirection="row"
       justifyContent="center"
@@ -21,37 +22,45 @@ const Content = () => {
       <Box
         display={{ base: "block", md: "none", sm: "block" }}
         onClick={() => setShow(!show)}
-        bgColor={{sm:"gray.200"}}
->
-       <ContentDrawer/>
+        bgColor={{ sm: "gray.200" }}
+      >
+        <ContentDrawer />
       </Box>
       <Box
         display={{ base: show ? "none" : "none", md: "flex" }}
         width={{ base: "full", md: "auto" }}
         alignItems="center"
       >
-     
-        <MenuItem  url="/footwear">
+        <MenuItem url="/men">
           <Flex alignItems="center" justifyContent="center" m="2">
-            Footwear
+          <Text fontWeight="bold" >Men</Text>
+
           </Flex>
         </MenuItem>
-        <MenuItem  url="/phone">
+        <MenuItem url="/women">
           <Flex alignItems="center" justifyContent="center" m="2">
-            Electronics
+          <Text fontWeight="bold" >Women</Text>
           </Flex>
         </MenuItem>
-        <MenuItem url="/fashion">
-          <Flex alignItems="center" justifyContent="center" m="2">
-            Fashion
+        <MenuItem url="/kids">
+          <Flex   alignItems="center" justifyContent="center" m="2">
+            <Text fontWeight="bold" >Kids</Text>
           </Flex>
         </MenuItem>
-        <MenuItem color="gray.200" url="/">
+      
+        <MenuItem url="/sports">
           <Flex alignItems="center" justifyContent="center" m="2">
-            Home and Kitchen
+            Sports
+          </Flex>
+        </MenuItem>  <MenuItem url="/casuals">
+          <Flex alignItems="center" justifyContent="center" m="2">
+            Casuals
+          </Flex>
+        </MenuItem>  <MenuItem url="/kids">
+          <Flex alignItems="center" justifyContent="center" m="2">
+            Deals
           </Flex>
         </MenuItem>
-     
       </Box>
     </Flex>
   );

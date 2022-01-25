@@ -9,7 +9,7 @@ export const MenuItem = ({ children, url }) => {
       fontSize="sm"
       letterSpacing="wide"
       color="gray.200"
-      fontWeight="bold"
+      // fontWeight="bold"
       textTransform="uppercase"
       m="2"
       display="block"

@@ -18,31 +18,36 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomeScreen />} />
 
-          <Route
-            path="/product/footwear/:id"
-            element={<ProductScreen type="footwear" />}
-          />
-          <Route
-            path="/product/fashion/:id"
-            element={<ProductScreen type="fashion" />}
-          />
-          <Route
-            path="/product/phone/:id"
-            element={<ProductScreen type="phone" />}
-          />
           <Route path="/product/:id" element={<ProductScreen />} />
 
           <Route
-            path="/footwear"
-            element={<ProductDisplayScreen type="footwear" />}
+            path="/men"
+            element={
+              <ProductDisplayScreen type="casuals" category="Mens Originals" />
+            }
           />
           <Route
-            path="/fashion"
-            element={<ProductDisplayScreen type="fashion" />}
+            path="/women"
+            element={
+              <ProductDisplayScreen type="casuals" category="Women Originals" />
+            }
           />
           <Route
-            path="/phone"
-            element={<ProductDisplayScreen type="phone" />}
+            path="/kids"
+            element={
+              <ProductDisplayScreen type="casuals" category="Kids Originals" />
+            }
+          />
+          <Route
+            path="/sports"
+            element={
+              <ProductDisplayScreen type="sports"  />
+            }
+          />
+
+          <Route
+            path="/casuals"
+            element={<ProductDisplayScreen type="casuals" />}
           />
         </Routes>
       </Flex>
