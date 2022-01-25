@@ -15,6 +15,7 @@ import { BsArrowLeftCircle } from "react-icons/bs";
 
 import Rating from "../components/Ratings";
 import axios from "axios";
+import ProductCorousel from "../components/ProductCorousel";
 
 const ProductScreen = ({type}) => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const ProductScreen = ({type}) => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/product//${id}`);
+      const { data } = await axios.get(`/api/product/${id}`);
       setProduct(data);
     };
 
@@ -38,7 +39,8 @@ const ProductScreen = ({type}) => {
       {/* <Grid templateColumns="5fr 4fr 3fr" gap="10"> */}
       <Grid templateColumns={{ sm: "2fr", lg: "5fr 4fr 3fr" }} gap="10">
         {/* Column one */}
-        <Image src={product.image} alt={product.name} />
+        <Image src={product.image1} alt={product.name} />
+        
         {/* Column two */}
         <Flex direction="column">
           <Heading as="h5" fontSize="base" color="gray.700">

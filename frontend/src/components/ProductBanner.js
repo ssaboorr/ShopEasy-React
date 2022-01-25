@@ -15,13 +15,13 @@ export const Banner1 = ({ type }) => {
     fetchProduct();
   }, []);
 
-  let product = products.filter((prod) => prod.type === 'fashion' & prod.rating >= 4.5);
+  let product = products.filter((prod) => prod.type === 'sports' & prod.rating >= 4.5);
 
   return (
     <>
       <Box display="flex" flexDirection="row" gap="5" justify="flex-start">
         <Heading as="h2" fontSize="3xl">
-          Trending Products
+          Trending In Football
         </Heading>
       </Box>
       <Flex
@@ -54,13 +54,13 @@ export const Banner2 = ({ type }) => {
     fetchProduct();
   }, []);
 
-  let product = products.filter((prod) => prod.type === 'footwear' & prod.rating >= 4.5);
+  let product = products.filter((prod) => prod.type === "casuals" & prod.category === "Mens Originals");
 
   return (
     <>
       <Box display="flex" flexDirection="row" gap="5" justify="flex-start">
         <Heading as="h2" fontSize="3xl">
-          New Arrivals
+          New Arrivals in Originals
         </Heading>
       </Box>
       <Flex
@@ -91,12 +91,12 @@ export const Banner3 = ({ type }) => {
     fetchProduct();
   }, []);
 
-  let product = products.filter((prod) => prod.type === 'fashion' & prod.rating >= 4.5);
+  let product = products.filter((prod) => prod.type === 'casuals' & prod.category === "Women Originals");
   return (
     <>
       <Box display="flex" flexDirection="row" gap="5" justify="flex-start">
         <Heading as="h2" fontSize="3xl">
-          New Arrivals
+          Trending Deals
         </Heading>
       </Box>
       <Flex
