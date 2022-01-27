@@ -41,7 +41,7 @@ const ProductDisplayScreen = ({ category, type }) => {
             mt="3"
             fontSize="4xl"
           >
-            {category} 
+            Latest Products
           </Heading>
           <Heading
             textTransform="uppercase"
@@ -50,14 +50,14 @@ const ProductDisplayScreen = ({ category, type }) => {
             mt="3"
             fontSize="3xl"
           >
-            {type} 
+            {type}
           </Heading>
 
           <Flex
             display="flex"
             direction="row"
             wrap="wrap"
-            justifyContent="center"
+            justifyContent="space-evenly"
             gap="5"
           >
             {prod.map((product) => (

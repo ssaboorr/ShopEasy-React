@@ -1,8 +1,9 @@
-import { Flex, Box, Icon, Text } from "@chakra-ui/react";
+import { Flex, Box, Icon, Text, Button } from "@chakra-ui/react";
 import { MenuItem } from "./MenuItem";
-import { Children, useState } from "react";
+import { useState } from "react";
 import ContentDrawer from "./ContentDrawer";
-import MenuContent from "./ContentMenu";
+import { Link as RouterLink, useParams } from "react-router-dom";
+import { BsArrowLeftCircle } from "react-icons/bs";
 
 const Content = () => {
   const [show, setShow] = useState(false);
@@ -24,7 +25,18 @@ const Content = () => {
         onClick={() => setShow(!show)}
         bgColor={{ sm: "gray.200" }}
       >
-        <ContentDrawer />
+        <Flex display="flex" flexDirecion="row" align="center" gap="155px" justify="space-between">
+
+          <Box>
+            <Button my="2" marginRight="10" as={RouterLink} to="/">
+              <Icon w="4" h="4" as={BsArrowLeftCircle} />
+            </Button>
+          </Box>
+
+          <Box>
+            <ContentDrawer />
+          </Box>
+        </Flex>
       </Box>
       <Box
         display={{ base: show ? "none" : "none", md: "flex" }}
@@ -33,30 +45,30 @@ const Content = () => {
       >
         <MenuItem url="/men">
           <Flex alignItems="center" justifyContent="center" m="2">
-          <Text fontWeight="bold" >Men</Text>
-
+            <Text fontWeight="bold">Men</Text>
           </Flex>
         </MenuItem>
         <MenuItem url="/women">
           <Flex alignItems="center" justifyContent="center" m="2">
-          <Text fontWeight="bold" >Women</Text>
+            <Text fontWeight="bold">Women</Text>
           </Flex>
         </MenuItem>
         <MenuItem url="/kids">
-          <Flex   alignItems="center" justifyContent="center" m="2">
-            <Text fontWeight="bold" >Kids</Text>
+          <Flex alignItems="center" justifyContent="center" m="2">
+            <Text fontWeight="bold">Kids</Text>
           </Flex>
         </MenuItem>
-      
         <MenuItem url="/sports">
           <Flex alignItems="center" justifyContent="center" m="2">
             Sports
           </Flex>
-        </MenuItem>  <MenuItem url="/casuals">
+        </MenuItem>{" "}
+        <MenuItem url="/casuals">
           <Flex alignItems="center" justifyContent="center" m="2">
             Casuals
           </Flex>
-        </MenuItem>  <MenuItem url="/kids">
+        </MenuItem>{" "}
+        <MenuItem url="/kids">
           <Flex alignItems="center" justifyContent="center" m="2">
             Deals
           </Flex>

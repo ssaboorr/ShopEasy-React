@@ -26,8 +26,8 @@ function SlideEx() {
       <>
         <Icon onClick={onToggle} as={HiMenuAlt3} color="black" w="6" h="6" />
   
-        <Slide direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
-          <Box p="40px" color="white" mt="4" bgColor="gray.800" shadow="md">
+        <Slide  direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
+          <Box borderRadius="2xl" p="40px" color="white" mt="4" bgColor="gray.800" shadow="md">
             <Box width={{ base: "full", md: "auto" }} alignItems="center">
               <MenuItem url="/">
                 <Flex alignItems="center" justifyContent="center" m="2">
