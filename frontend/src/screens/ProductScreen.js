@@ -19,7 +19,6 @@ import { BsArrowLeftCircle } from "react-icons/bs";
 
 import Rating from "../components/Ratings";
 import axios from "axios";
-import ProductCorousel from "../components/ProductCorousel";
 
 const breakpoints = createBreakpoints({
   sm: "320px",

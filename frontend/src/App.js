@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import ProductDisplayScreen from "./screens/ProductDisplayScreen";
+import SearchScreen from "./screens/SearchScreen";
 
 const App = () => {
   return (
@@ -40,15 +41,15 @@ const App = () => {
           />
           <Route
             path="/sports"
-            element={
-              <ProductDisplayScreen type="sports"  />
-            }
+            element={<ProductDisplayScreen type="sports" />}
           />
 
           <Route
             path="/casuals"
             element={<ProductDisplayScreen type="casuals" />}
           />
+
+          <Route path="/search-result" element={<SearchScreen  />} />
         </Routes>
       </Flex>
       <Footer />

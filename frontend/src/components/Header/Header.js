@@ -8,20 +8,15 @@ import {
   Box,
   Icon,
   Input,
-  InputGroup,
-  InputLeftElement,
+  Button,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import {
-  HiOutlineUser,
-  HiShoppingCart,
-  HiMenuAlt3,
-  HiLogin,
-} from "react-icons/hi";
+import { HiOutlineUser, HiShoppingCart, HiLogin } from "react-icons/hi";
 
 import { GoSignIn } from "react-icons/go";
 
 import { Display, MenuItem, ProductMenu } from "./MenuItem";
+import SearchBar from '../Search'
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -64,15 +59,9 @@ const Header = () => {
       >
         <SlideEx />
       </Box>
-      {/* <Box>
-        <InputGroup>
-          <InputLeftElement
-            pointerEvents="none"
-            children={<SearchIcon color="gray.300" />}
-          />
-          <Input type="text" placeholder="Search" />
-        </InputGroup>
-      </Box> */}
+      <Box>
+        {/* <SearchBar /> */}
+      </Box>
       <Box
         display={{ base: show ? "none" : "none", md: "flex" }}
         width={{ base: "full", md: "auto" }}
