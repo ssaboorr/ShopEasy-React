@@ -48,8 +48,8 @@ const ProductScreen = ({ type }) => {
   return (
     <>
       <Flex display={{ base: "none", md: "block", sm: "none" }} mb="5">
-        <Button my="2" mx="3" as={RouterLink} to="/">
-          <Icon w="4" h="4" as={BsArrowLeftCircle} />
+        <Button bgColor="gray.800" colorScheme="teal" my="2" mx="3" as={RouterLink} to="/">
+          <Icon color="gray.200" w="4" h="4" as={BsArrowLeftCircle} />
         </Button>
       </Flex>
       {/* <Grid templateColumns="5fr 4fr 3fr" gap="10"> */}
@@ -115,18 +115,18 @@ const ProductScreen = ({ type }) => {
           >
             ₹{product.price}
           </Heading>
-          <Text>{product.description}</Text>
+          <Text color="gray.700">{product.description}</Text>
         </Flex>
 
         {/* Column three */}
         <Flex direction="column">
           <Flex justifyContent="space-between">
-            <Text>Price:</Text>
-            <Text fontWeight="bold">₹{product.price}</Text>
+            <Text color="gray.700">Price:</Text>
+            <Text color="gray.700" fontWeight="bold">₹{product.price}</Text>
           </Flex>
           <Flex justifyContent="space-between">
-            <Text>Status:</Text>
-            <Text>
+            <Text color="gray.700">Status:</Text>
+            <Text color="gray.700">
               {product.countInStock > 0 ? "In stock" : "Not available"}
             </Text>
           </Flex>
@@ -136,6 +136,7 @@ const ProductScreen = ({ type }) => {
             textTransform="uppercase"
             letterSpacing="wide"
             colorScheme="teal"
+            color="gray.200"
             my="3"
             _disabled={product.countInStock === 0}
           >

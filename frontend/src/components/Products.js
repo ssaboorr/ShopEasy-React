@@ -1,6 +1,6 @@
 import { Link as RouterLink } from "react-router-dom";
 import { useState } from "react";
-import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
 import Rating from "./Ratings";
 
 const Product = ({ product, type }) => {
@@ -20,7 +20,7 @@ const Product = ({ product, type }) => {
         maxW="sm"
         borderRadius="lg"
         overflow="hidden"
-        bgColor="white"
+        bgColor="whiteAlpha.400"
         transition="all"
         _hover={{ shadow: "xl" }}
       >
@@ -32,11 +32,12 @@ const Product = ({ product, type }) => {
           minH="250px"
           objcetFit="cover"
         />
+        <Divider/>
         <Flex py="5" px="4" direction="column" justifyContent="space-between">
-          <Heading as="h4" mb="3" fontSize="lg">
+          <Heading as="h4" mb="3" fontSize="lg" color="gray.800">
             {product.name}
           </Heading>
-          <Text>{product.category}</Text>
+          <Text color="gray.700">{product.category}</Text>
           <Flex alignItems="center" justifyContent="space-between">
             <Rating value={product.rating} color="yellow.600" />
             <Text fontSize="2xl" fontWeight="bold" color="blue.600">

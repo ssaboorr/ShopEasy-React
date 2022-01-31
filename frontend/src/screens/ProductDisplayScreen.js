@@ -1,4 +1,4 @@
-import { Flex, Heading, Box, Input, Button } from "@chakra-ui/react";
+import { Flex, Heading, Box, Input, Button, Grid } from "@chakra-ui/react";
 import axios from "axios";
 
 import { useEffect, useState } from "react";
@@ -80,8 +80,7 @@ const ProductDisplayScreen = ({ category, type }) => {
     prod = products.filter((product) => product.type === "casuals");
   } else if (type === "casuals") {
     prod = products.filter((product) => product.type === "casuals");
-  } 
-
+  }
 
   return (
     <>
@@ -94,6 +93,7 @@ const ProductDisplayScreen = ({ category, type }) => {
               mb="8"
               mt="3"
               fontSize="4xl"
+              color="gray.800"
             >
               Latest Products
             </Heading>
@@ -105,14 +105,18 @@ const ProductDisplayScreen = ({ category, type }) => {
             mb="8"
             mt="3"
             fontSize="3xl"
+            color="gray.700"
+
           >
             {type}
           </Heading>
 
-          <Flex
-            display="flex"
-            direction="row"
-            wrap="wrap"
+          <Grid
+            gridTemplateColumns={{
+              lg: "repeat(4,1fr)",
+              md: "repeat(2,1fr)",
+              base: "1fr",
+            }}
             justifyContent="space-evenly"
             gap="5"
           >
@@ -123,13 +127,11 @@ const ProductDisplayScreen = ({ category, type }) => {
                 product={product}
               />
             ))}
-          </Flex>
+          </Grid>
         </Box>
       </Flex>
     </>
-
   );
-
 };
 
 export default ProductDisplayScreen;
