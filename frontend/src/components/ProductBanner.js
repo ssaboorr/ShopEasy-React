@@ -16,8 +16,9 @@ export const Banner1 = ({ type }) => {
   }, []);
 
   let product = products.filter(
-    (prod) => (prod.type === "sports") & (prod.rating >= 4.5)
+    (prod) => (prod.type === "sports") & (prod.price <= 6000)
   );
+
 
   return (
     <>
@@ -60,11 +61,7 @@ export const Banner2 = ({ type }) => {
 
   return (
     <>
-      <Box display="flex" flexDirection="row" gap="5" justify="flex-start">
-        <Heading as="h2" color="gray.800" fontSize="3xl">
-          New Arrivals in Originals
-        </Heading>
-      </Box>
+   
       <Grid
         gridTemplateColumns={{
           lg: "repeat(4,1fr)",

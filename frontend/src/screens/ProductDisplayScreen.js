@@ -84,7 +84,7 @@ const ProductDisplayScreen = ({ category, type }) => {
 
   return (
     <>
-      <Flex mt="20px">
+      <Flex my="4" p="5" mt="20px">
         <Box>
           <Flex display="flex" flexDirection="row" justify="space-between">
             <Heading

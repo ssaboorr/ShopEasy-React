@@ -1,4 +1,4 @@
-import { Flex, Box, Icon, Text, Button } from "@chakra-ui/react";
+import { Flex, Box, Icon, Text, Button, Link } from "@chakra-ui/react";
 import { MenuItem } from "./MenuItem";
 import { useState } from "react";
 import ContentDrawer from "./ContentDrawer";
@@ -14,7 +14,7 @@ const Content = () => {
       py="5"
       as="header"
       //   bgColor="red.700"
-      bgColor={{ md: "gray.800", base: "gray.200", sm: "gray.200" }}
+      bgColor={{ lg: "gray.800", md: "gray.800", base: "gray.800" }}
       display="flex"
       flexDirection="row"
       justifyContent="center"
@@ -23,14 +23,18 @@ const Content = () => {
       <Box
         display={{ base: "block", md: "none", sm: "block" }}
         onClick={() => setShow(!show)}
-        bgColor={{ sm: "gray.200" }}
       >
-        <Flex display="flex" flexDirecion="row" align="center" gap="155px" justify="space-between">
-
+        <Flex
+          display="flex"
+          flexDirecion="row"
+          align="center"
+          gap="155px"
+          justify="space-between"
+        >
           <Box>
-            <Button my="2" marginRight="10" as={RouterLink} to="/">
-              <Icon w="4" h="4" as={BsArrowLeftCircle} />
-            </Button>
+              <Link my="2" marginRight="10" as={RouterLink} to="/">
+                <Icon color="gray.200" w="5" h="5" as={BsArrowLeftCircle} />
+              </Link>
           </Box>
 
           <Box>

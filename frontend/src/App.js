@@ -15,7 +15,7 @@ const App = () => {
     <div>
       <Header />
       <Content />
-      <Flex as="main" mt="0px" minH="xl" p="6" bgColor="gray.200">
+      <Flex as="main" mt="0px" minH="xl" bgColor="gray.200">
         <Routes>
           <Route path="/" element={<HomeScreen />} />
 

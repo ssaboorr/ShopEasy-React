@@ -14,6 +14,10 @@ app.get("/", (req, res) => {
   res.send("api is running");
 });
 
+// app.get("/api/product/sports", (req, res) => {
+//   res.send("Sports");
+// });
+
 app.use("/api/product", productRoutes);
 
 app.use(notFound);

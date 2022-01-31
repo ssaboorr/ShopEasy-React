@@ -47,7 +47,7 @@ const ProductScreen = ({ type }) => {
   }, []);
   return (
     <>
-      <Flex display={{ base: "none", md: "block", sm: "none" }} mb="5">
+      <Flex m="4" p="5" display={{ base: "none", md: "block", sm: "none" }} mb="5">
         <Button bgColor="gray.800" colorScheme="teal" my="2" mx="3" as={RouterLink} to="/">
           <Icon color="gray.200" w="4" h="4" as={BsArrowLeftCircle} />
         </Button>

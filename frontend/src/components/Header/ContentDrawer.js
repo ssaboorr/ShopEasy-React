@@ -31,16 +31,16 @@ function ContenDrawer() {
         alignItems="center"
         justifyContent="center"
         m="2"
-        bgColor="gray.200"
+        bgColor="gray.800"
       >
         <Icon
           w="4"
           h="4"
           justifyContent="flex-end"
-          color="gray.800"
+          color="gray.200"
           as={BsFillMenuButtonWideFill}
         />
-        <Text m="2" as="h3" color="gray.800">
+        <Text m="2" as="h3" fontWeight="bold" color="gray.200">
           Products
         </Text>
       </Flex>
