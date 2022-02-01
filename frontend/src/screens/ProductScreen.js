@@ -20,6 +20,7 @@ import { listProductDetails } from "../actions/productActions";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsArrowLeftCircle } from "react-icons/bs";
+import { BiPlus, BiMinus } from "react-icons/bi";
 
 import Rating from "../components/Ratings";
 
@@ -39,6 +40,8 @@ const ProductScreen = ({ type }) => {
   const { id } = useParams();
   const [image, setImage] = useState("");
   const [qty, setQty] = useState(1);
+  const [count, setCount] = useState(1);
+
   const productDetails = useSelector((state) => state.productDetails);
 
   const { loading, product, error } = productDetails;
@@ -50,6 +53,9 @@ const ProductScreen = ({ type }) => {
   const addToCartHandler = () => {
     navigate(`/cart/${id}?qty=${qty}`);
   };
+
+  const inc = () => setQty(qty + 1);
+  const dec = () => setQty(qty - 1);
 
   return (
     <>
@@ -162,18 +168,29 @@ const ProductScreen = ({ type }) => {
             {product.countInStock > 0 && (
               <Flex justifyContent="space-between" py="2">
                 <Text color="gray.800">Qty:</Text>
-                <Select
-                  color="gray.800"
-                  value={qty}
-                  onChange={(e) => setQty(e.target.value)}
-                  width="30%"
-                >
-                  {[...Array(product.countInStock).keys()].map((i) => (
-                    <option key={i + 1} value={i + 1}>
-                      {i + 1}
-                    </option>
-                  ))}
-                </Select>
+
+                <Icon
+                  w="5"
+                  h="5"
+                  marginLeft="80px"
+                  color="black"
+                  as={BiPlus}
+                  onClick={inc}
+                />
+
+                <Text color="gray.800">{qty}</Text>
+                {qty == 0 ? (
+                  <Icon
+                  visibility="hidden"
+                    w="5"
+                    h="5"
+                    color="black"
+                    as={BiMinus}
+                    onClick={dec}
+                  />
+                ) : (
+                  <Icon w="5" h="5" color="black" as={BiMinus} onClick={dec} />
+                )}
               </Flex>
             )}
             <Button
