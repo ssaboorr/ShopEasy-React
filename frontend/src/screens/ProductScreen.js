@@ -1,4 +1,4 @@
-import { Link as RouterLink, useParams } from "react-router-dom";
+import { Link as RouterLink, useNavigate, useParams } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import {
@@ -11,6 +11,7 @@ import {
   Text,
   Divider,
   Icon,
+  Select,
 } from "@chakra-ui/react";
 
 import { extendTheme } from "@chakra-ui/react";
@@ -34,19 +35,21 @@ const theme = extendTheme({ breakpoints });
 
 const ProductScreen = ({ type }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
   const [image, setImage] = useState("");
+  const [qty, setQty] = useState(1);
   const productDetails = useSelector((state) => state.productDetails);
 
   const { loading, product, error } = productDetails;
 
   useEffect(() => {
     dispatch(listProductDetails(id));
-    // setImage(product.image3);
-    // console.log(image);
   }, [id, dispatch]);
 
-  // console.log(image);
+  const addToCartHandler = () => {
+    navigate(`/cart/${id}?qty=${qty}`);
+  };
 
   return (
     <>
@@ -156,6 +159,23 @@ const ProductScreen = ({ type }) => {
               </Text>
             </Flex>
             <Divider />
+            {product.countInStock > 0 && (
+              <Flex justifyContent="space-between" py="2">
+                <Text color="gray.800">Qty:</Text>
+                <Select
+                  color="gray.800"
+                  value={qty}
+                  onChange={(e) => setQty(e.target.value)}
+                  width="30%"
+                >
+                  {[...Array(product.countInStock).keys()].map((i) => (
+                    <option key={i + 1} value={i + 1}>
+                      {i + 1}
+                    </option>
+                  ))}
+                </Select>
+              </Flex>
+            )}
             <Button
               bgColor="gray.800"
               textTransform="uppercase"
@@ -164,6 +184,7 @@ const ProductScreen = ({ type }) => {
               color="gray.200"
               my="3"
               _disabled={product.countInStock === 0}
+              onClick={addToCartHandler}
             >
               Add to Cart
             </Button>
