@@ -73,7 +73,7 @@ const Header = () => {
             User
           </Flex>
         </MenuItem>
-        <MenuItem url="/">
+        <MenuItem url="/cart">
           <Flex alignItems="center" justifyContent="center" m="2">
             <Icon w="4" h="4" mr="1" as={HiShoppingCart} />
             Cart

@@ -53,7 +53,7 @@ const CartScreen = () => {
 
   console.log(cartItems);
 
-  cartItems.map((item) => console.log(item.image));
+  // cartItems.map((item) => console.log(item.image));
 
   return (
     <Grid gridTemplateColumns={{ lg: "3", md: "2", base: "1" }}>

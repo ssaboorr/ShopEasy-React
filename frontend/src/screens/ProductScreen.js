@@ -23,6 +23,7 @@ import { BsArrowLeftCircle } from "react-icons/bs";
 import { BiPlus, BiMinus } from "react-icons/bi";
 
 import Rating from "../components/Ratings";
+import CartModal from "../components/CartModal";
 
 const breakpoints = createBreakpoints({
   sm: "320px",
@@ -56,6 +57,7 @@ const ProductScreen = ({ type }) => {
 
   const inc = () => setQty(qty + 1);
   const dec = () => setQty(qty - 1);
+
 
   return (
     <>
@@ -181,7 +183,7 @@ const ProductScreen = ({ type }) => {
                 <Text color="gray.800">{qty}</Text>
                 {qty == 0 ? (
                   <Icon
-                  visibility="hidden"
+                    visibility="hidden"
                     w="5"
                     h="5"
                     color="black"
@@ -193,7 +195,7 @@ const ProductScreen = ({ type }) => {
                 )}
               </Flex>
             )}
-            <Button
+            {/* <Button
               bgColor="gray.800"
               textTransform="uppercase"
               letterSpacing="wide"
@@ -204,7 +206,9 @@ const ProductScreen = ({ type }) => {
               onClick={addToCartHandler}
             >
               Add to Cart
-            </Button>
+            </Button> */}
+
+            <CartModal qty={qty}  product={product} id={id} />
           </Flex>
         </Grid>
       )}
