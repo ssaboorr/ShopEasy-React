@@ -37,11 +37,11 @@ const theme = extendTheme({ breakpoints });
 
 const ProductScreen = ({ type }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { id } = useParams();
   const [image, setImage] = useState("");
   const [qty, setQty] = useState(1);
-  const [count, setCount] = useState(1);
+  const [size, setSize] = useState(6);
+
 
   const productDetails = useSelector((state) => state.productDetails);
 
@@ -51,13 +51,10 @@ const ProductScreen = ({ type }) => {
     dispatch(listProductDetails(id));
   }, [id, dispatch]);
 
-  const addToCartHandler = () => {
-    navigate(`/cart/${id}?qty=${qty}`);
-  };
+
 
   const inc = () => setQty(qty + 1);
   const dec = () => setQty(qty - 1);
-
 
   return (
     <>
@@ -166,6 +163,18 @@ const ProductScreen = ({ type }) => {
                 {product.countInStock > 0 ? "In stock" : "Not available"}
               </Text>
             </Flex>
+
+            <Flex justifyContent="space-between">
+              <Text color="gray.700">Size:</Text>
+
+              <Select color="gray.800" width="20" onChange={(e) => setSize(e.target.value)} >
+                {[4, 5, 6, 7, 8, 9].map((i) => (
+                  <option key={i + 1} value={i + 1}>
+                    {i + 1}
+                  </option>
+                ))}
+              </Select>
+            </Flex>
             <Divider />
             {product.countInStock > 0 && (
               <Flex justifyContent="space-between" py="2">
@@ -195,20 +204,8 @@ const ProductScreen = ({ type }) => {
                 )}
               </Flex>
             )}
-            {/* <Button
-              bgColor="gray.800"
-              textTransform="uppercase"
-              letterSpacing="wide"
-              colorScheme="teal"
-              color="gray.200"
-              my="3"
-              _disabled={product.countInStock === 0}
-              onClick={addToCartHandler}
-            >
-              Add to Cart
-            </Button> */}
-
-            <CartModal qty={qty}  product={product} id={id} />
+         
+            <CartModal qty={qty} product={product} id={id} size={size} />
           </Flex>
         </Grid>
       )}

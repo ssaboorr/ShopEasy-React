@@ -15,13 +15,16 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink,useNavigate } from "react-router-dom";
 import { addToCart, removeFromCart } from "../actions/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-function CartModal({ qty, product, id }) {
+
+function CartModal({ qty, product, id,size }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
@@ -31,11 +34,13 @@ function CartModal({ qty, product, id }) {
     console.log("clicked");
     onOpen();
     if (id) {
-      dispatch(addToCart(qty, id));
+      dispatch(addToCart(qty, id,size));
     }
   };
 
-  console.log(cart);
+
+
+//   console.log(cart);
   //   console.log(id);
   return (
     <>
@@ -68,7 +73,7 @@ function CartModal({ qty, product, id }) {
                   <Text color="blue.600">₹ {product.price}</Text>
                   <Text fontSize="sm">Category: {product.category}</Text>
                   <Text fontSize="sm">Quantity: {qty}</Text>
-                  <Text fontSize="sm">Size:</Text>
+                  <Text fontSize="sm">Size: {size}</Text>
                 </Flex>
 
                 <Divider

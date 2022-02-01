@@ -33,6 +33,7 @@ const CartScreen = () => {
   const { id: productId } = useParams();
   let qty = searchParams.get("qty");
 
+
   const cart = useSelector((state) => state.cart);
 
   const { cartItems } = cart;
@@ -89,73 +90,85 @@ const CartScreen = () => {
                     px="2"
                     rounded="lg"
                     templateColumns={{
-                      lg: "2fr 3fr 2fr 2fr 1fr",
+                      lg: "4fr 2fr",
                       md: "2fr",
                       base: "1fr",
                     }}
                     _hover={{ bgColor: "gray.300" }}
                   >
-                    {/* Product Image */}
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      borderRadius="lg"
-                      height="200"
-                      width="200px"
-                      objectFit="cover"
-                      m="3"
-                    />
+                    <Grid templateColumns="2fr 2fr">
+                      {/* Product Image */}
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        borderRadius="lg"
+                        height="200"
+                        width="200px"
+                        objectFit="cover"
+                        m="3"
+                      />
+                      {/* Product Name */}
 
-                    {/* Product Name */}
+                      <Flex direction="column">
+                        <Text
+                          mx="4"
+                          mt="5"
+                          fontSize="2xl"
+                          color="gray.800"
+                          fontWeight="bold"
+                        >
+                          <Link as={RouterLink} to={`/product/${item.product}`}>
+                            {item.name}
+                          </Link>
+                        </Text>
+                        {/* Product Price */}
+                        <Text
+                          mx="4"
+                          color="blue.600"
+                          fontWeight="bold"
+                          fontSize="2xl"
+                        >
+                          ₹{item.price}
+                        </Text>
+                      </Flex>
+                    
+                    </Grid>
 
-                    <Text
-                      mx="7"
-                      fontSize="2xl"
-                      color="gray.800"
-                      fontWeight="bold"
-                    >
-                      <Link as={RouterLink} to={`/product/${item.product}`}>
-                        {item.name}
-                      </Link>
-                    </Text>
+                    <Flex direction="column">
+                      <Flex direction="row" justifyContent="space-between">
+                        <Text>Size: </Text>
+                      </Flex>
+                      <Flex direction="row" justifyContent="space-between">
+                        <Text>Qty:</Text>
+                        {/* Quantity Selet Box */}
+                        <Select
+                          color="gray.800"
+                          value={item.qty}
+                          width="20"
+                          onChange={(e) =>
+                            dispatch(addToCart(+e.target.value, item.product))
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((i) => (
+                            <option key={i + 1} value={i + 1}>
+                              {i + 1}
+                            </option>
+                          ))}
+                        </Select>
+                      </Flex>
 
-                    {/* Product Price */}
-                    <Text
-                      mx="7"
-                      color="blue.600"
-                      fontWeight="bold"
-                      fontSize="2xl"
-                    >
-                      ₹{item.price}
-                    </Text>
+                      {/* Delete Button */}
 
-                    {/* Quantity Selet Box */}
-
-                    <Select
-                      color="gray.800"
-                      value={item.qty}
-                      width="20"
-                      onChange={(e) =>
-                        dispatch(addToCart(+e.target.value, item.product))
-                      }
-                    >
-                      {[...Array(item.countInStock).keys()].map((i) => (
-                        <option key={i + 1} value={i + 1}>
-                          {i + 1}
-                        </option>
-                      ))}
-                    </Select>
-
-                    {/* Delete Button */}
-
-                    <Button
-                      type="button"
-                      colorScheme="red"
-                      bgColor="gray.800"
-                      onClick={() => removeCartHandler(item.product)}
-                    >
-                      <Icon color="whiteAlpha.400" as={IoTrashBinSharp} />
-                    </Button>
+                      <Button
+                        mt="6"
+                        type="button"
+                        colorScheme="red"
+                        bgColor="gray.800"
+                        onClick={() => removeCartHandler(item.product)}
+                      >
+                        <Icon color="whiteAlpha.400" as={IoTrashBinSharp} />
+                      </Button>
+                    </Flex>
                   </Grid>
                 ))}
               </Flex>
