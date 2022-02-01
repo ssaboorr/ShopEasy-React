@@ -1,4 +1,6 @@
 import { Link as RouterLink, useParams } from "react-router-dom";
+import Message from "../components/Message";
+import Loader from "../components/Loader";
 import {
   Flex,
   Grid,
@@ -13,12 +15,12 @@ import {
 
 import { extendTheme } from "@chakra-ui/react";
 import { createBreakpoints } from "@chakra-ui/theme-tools";
-
+import { listProductDetails } from "../actions/productActions";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { BsArrowLeftCircle } from "react-icons/bs";
 
 import Rating from "../components/Ratings";
-import axios from "axios";
 
 const breakpoints = createBreakpoints({
   sm: "320px",
@@ -31,119 +33,143 @@ const breakpoints = createBreakpoints({
 const theme = extendTheme({ breakpoints });
 
 const ProductScreen = ({ type }) => {
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const [product, setProduct] = useState({});
   const [image, setImage] = useState("");
+  const productDetails = useSelector((state) => state.productDetails);
+
+  const { loading, product, error } = productDetails;
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/product/${id}`);
-      setProduct(data);
-      setImage(data.image1);
-      console.log(image);
-    };
+    dispatch(listProductDetails(id));
+    // setImage(product.image3);
+    // console.log(image);
+  }, [id, dispatch]);
 
-    fetchProduct();
-  }, []);
+  // console.log(image);
+
   return (
     <>
-      <Flex m="4" p="5" display={{ base: "none", md: "block", sm: "none" }} mb="5">
-        <Button bgColor="gray.800" colorScheme="teal" my="2" mx="3" as={RouterLink} to="/">
+      <Flex
+        m="4"
+        p="5"
+        display={{ base: "none", md: "block", sm: "none" }}
+        mb="5"
+      >
+        <Button
+          bgColor="gray.800"
+          colorScheme="teal"
+          my="2"
+          mx="3"
+          as={RouterLink}
+          to="/"
+        >
           <Icon color="gray.200" w="4" h="4" as={BsArrowLeftCircle} />
         </Button>
       </Flex>
-      {/* <Grid templateColumns="5fr 4fr 3fr" gap="10"> */}
-      <Grid templateColumns={{ sm: "2fr", lg: "6fr 3fr 2fr" }} gap="10">
-        {/* Column one */}
-        <Flex flexDirection="column" gap="2">
-          {/* <Image src={product.image1} alt={product.name} /> */}
-          <Image src={image} alt={product.name} />
 
-          <Flex flexDirection="row" wrap="wrap">
-            <Box
-              display="flex"
-              flexDirection="row"
-              wrap="wrap"
-              width={{ lg: "120px", md: "90px", sm: "70px", base: "50px" }}
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message type="error">{error}</Message>
+      ) : (
+        <Grid
+          templateColumns={{ sm: "2fr", lg: "6fr 3fr 2fr" }}
+          gap="10"
+          m="3"
+          p="3"
+        >
+          <Flex flexDirection="column" gap="2">
+            <Image src={product.image1} alt={product.name} />
+
+            <Flex flexDirection="row" wrap="wrap">
+              <Box
+                display="flex"
+                flexDirection="row"
+                wrap="wrap"
+                width={{ lg: "120px", md: "90px", sm: "70px", base: "50px" }}
+              >
+                <Image
+                  onClick={() => setImage(product.image1)}
+                  my="3"
+                  src={product.image1}
+                  alt={product.name}
+                />
+                <Image
+                  onClick={() => setImage(product.image2)}
+                  my="3"
+                  src={product.image2}
+                  alt={product.name}
+                />
+                <Image
+                  onClick={() => setImage(product.image3)}
+                  my="3"
+                  src={product.image3}
+                  alt={product.name}
+                />
+                <Image
+                  onClick={() => setImage(product.image4)}
+                  my="3"
+                  src={product.image4}
+                  alt={product.name}
+                />
+              </Box>
+            </Flex>
+          </Flex>
+
+          {/* Column two */}
+          <Flex direction="column">
+            <Heading as="h5" fontSize="base" color="gray.700">
+              {product.brand}
+            </Heading>
+            <Heading as="h2" fontSize="2xl" color="gray.500">
+              {product.name}
+            </Heading>
+            <Rating
+              value={product.rating}
+              text={`${product.numReviews} reviews`}
+            />
+            <Heading
+              as="h4"
+              my="5"
+              fontSize="4xl"
+              fontweight="bold"
+              color="teal.600"
             >
-              <Image
-                onClick={() => setImage(product.image1)}
-                my="3"
-                src={product.image1}
-                alt={product.name}
-              />
-              <Image
-                onClick={() => setImage(product.image2)}
-                my="3"
-                src={product.image2}
-                alt={product.name}
-              />
-              <Image
-                onClick={() => setImage(product.image3)}
-                my="3"
-                src={product.image3}
-                alt={product.name}
-              />
-              <Image
-                onClick={() => setImage(product.image4)}
-                my="3"
-                src={product.image4}
-                alt={product.name}
-              />
-            </Box>
+              ₹{product.price}
+            </Heading>
+            <Text color="gray.700">{product.description}</Text>
           </Flex>
-        </Flex>
 
-        {/* Column two */}
-        <Flex direction="column">
-          <Heading as="h5" fontSize="base" color="gray.700">
-            {product.brand}
-          </Heading>
-          <Heading as="h2" fontSize="2xl" color="gray.500">
-            {product.name}
-          </Heading>
-          <Rating
-            value={product.rating}
-            text={`${product.numReviews} reviews`}
-          />
-          <Heading
-            as="h4"
-            my="5"
-            fontSize="4xl"
-            fontweight="bold"
-            color="teal.600"
-          >
-            ₹{product.price}
-          </Heading>
-          <Text color="gray.700">{product.description}</Text>
-        </Flex>
-
-        {/* Column three */}
-        <Flex direction="column">
-          <Flex justifyContent="space-between">
-            <Text color="gray.700">Price:</Text>
-            <Text color="gray.700" fontWeight="bold">₹{product.price}</Text>
+          {/* Column three */}
+          <Flex direction="column">
+            <Flex justifyContent="space-between">
+              <Text color="gray.700">Price:</Text>
+              <Text color="gray.700" fontWeight="bold">
+                ₹{product.price}
+              </Text>
+            </Flex>
+            <Flex justifyContent="space-between">
+              <Text color="gray.700">Status:</Text>
+              <Text color="gray.700">
+                {product.countInStock > 0 ? "In stock" : "Not available"}
+              </Text>
+            </Flex>
+            <Divider />
+            <Button
+              bgColor="gray.800"
+              textTransform="uppercase"
+              letterSpacing="wide"
+              colorScheme="teal"
+              color="gray.200"
+              my="3"
+              _disabled={product.countInStock === 0}
+            >
+              Add to Cart
+            </Button>
           </Flex>
-          <Flex justifyContent="space-between">
-            <Text color="gray.700">Status:</Text>
-            <Text color="gray.700">
-              {product.countInStock > 0 ? "In stock" : "Not available"}
-            </Text>
-          </Flex>
-          <Divider />
-          <Button
-            bgColor="gray.800"
-            textTransform="uppercase"
-            letterSpacing="wide"
-            colorScheme="teal"
-            color="gray.200"
-            my="3"
-            _disabled={product.countInStock === 0}
-          >
-            Add to Cart
-          </Button>
-        </Flex>
-      </Grid>
+        </Grid>
+      )}
     </>
   );
 };
