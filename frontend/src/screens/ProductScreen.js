@@ -42,20 +42,23 @@ const ProductScreen = ({ type }) => {
   const [qty, setQty] = useState(1);
   const [size, setSize] = useState(6);
 
-
   const productDetails = useSelector((state) => state.productDetails);
 
   const { loading, product, error } = productDetails;
 
   useEffect(() => {
     dispatch(listProductDetails(id));
+    setImage(product.image1);
   }, [id, dispatch]);
 
-
+  // console.log(productDetails.product.image1)
+  // console.log(image);
 
   const inc = () => setQty(qty + 1);
   const dec = () => setQty(qty - 1);
 
+
+ 
   return (
     <>
       <Flex
@@ -88,7 +91,11 @@ const ProductScreen = ({ type }) => {
           p="3"
         >
           <Flex flexDirection="column" gap="2">
-            <Image src={product.image1} alt={product.name} />
+            {image ? (
+              <Image src={image} alt={product.name} />
+            ) : (
+              <Image src={product.image1} alt={product.name} />
+            )}
 
             <Flex flexDirection="row" wrap="wrap">
               <Box
@@ -167,10 +174,14 @@ const ProductScreen = ({ type }) => {
             <Flex justifyContent="space-between">
               <Text color="gray.700">Size:</Text>
 
-              <Select color="gray.800" width="20" onChange={(e) => setSize(e.target.value)} >
+              <Select
+                color="gray.800"
+                width="20"
+                onChange={(e) => setSize(e.target.value)}
+              >
                 {[4, 5, 6, 7, 8, 9].map((i) => (
-                  <option key={i + 1} value={i + 1}>
-                    {i + 1}
+                  <option key={i} value={i}>
+                    {i}
                   </option>
                 ))}
               </Select>
@@ -204,7 +215,7 @@ const ProductScreen = ({ type }) => {
                 )}
               </Flex>
             )}
-         
+
             <CartModal qty={qty} product={product} id={id} size={size} />
           </Flex>
         </Grid>

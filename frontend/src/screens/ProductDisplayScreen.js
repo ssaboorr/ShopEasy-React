@@ -8,15 +8,19 @@ import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
-const ProductDisplayScreen = () => {
+const ProductDisplayScreen = ({type,category}) => {
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  let { loading, error, products } = productList;
 
   useEffect(() => {
     dispatch(listProducts());
   }, []);
+
+  if (type) {
+    products = products.filter((product) => product.type === type);
+  }
 
   // console.log(products);
   return (

@@ -37,6 +37,7 @@ const CartScreen = () => {
   const cart = useSelector((state) => state.cart);
 
   const { cartItems } = cart;
+  console.log(cartItems)
 
   useEffect(() => {
     if (productId) {
@@ -137,6 +138,7 @@ const CartScreen = () => {
                     <Flex direction="column">
                       <Flex direction="row" justifyContent="space-between">
                         <Text>Size: </Text>
+                        <Text mx="3">UK {item.size}</Text>
                       </Flex>
                       <Flex direction="row" justifyContent="space-between">
                         <Text>Qty:</Text>

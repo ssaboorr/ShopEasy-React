@@ -34,9 +34,10 @@ function CartModal({ qty, product, id,size }) {
     console.log("clicked");
     onOpen();
     if (id) {
-      dispatch(addToCart(qty, id,size));
+      dispatch(addToCart(qty,id,size));
     }
   };
+//   console.log(size)
 
 
 
