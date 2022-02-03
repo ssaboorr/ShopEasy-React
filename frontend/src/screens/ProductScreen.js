@@ -24,6 +24,7 @@ import { BiPlus, BiMinus } from "react-icons/bi";
 
 import Rating from "../components/Ratings";
 import CartModal from "../components/CartModal";
+import {PRODUCT_DETAILS_RESET} from '../constants/productConstants'
 
 const breakpoints = createBreakpoints({
   sm: "320px",
@@ -37,6 +38,7 @@ const theme = extendTheme({ breakpoints });
 
 const ProductScreen = ({ type }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { id } = useParams();
   const [image, setImage] = useState("");
   const [qty, setQty] = useState(1);
@@ -57,6 +59,11 @@ const ProductScreen = ({ type }) => {
   const inc = () => setQty(qty + 1);
   const dec = () => setQty(qty - 1);
 
+  const handleBack = () => {
+    dispatch({type: PRODUCT_DETAILS_RESET})
+    navigate('/')
+  }
+
 
  
   return (
@@ -72,8 +79,7 @@ const ProductScreen = ({ type }) => {
           colorScheme="teal"
           my="2"
           mx="3"
-          as={RouterLink}
-          to="/"
+          onClick={handleBack}
         >
           <Icon color="gray.200" w="4" h="4" as={BsArrowLeftCircle} />
         </Button>

@@ -4,11 +4,13 @@ import dotenv from "dotenv";
 import colors from "colors";
 import productRoutes from "./routes/productRoutes.js";
 import { notFound, errorHandler } from "./middlewares/errorMiddlewares.js";
-
+import userRoutes from "./routes/userRoutes.js"
 dotenv.config();
 connectDb();
 
 const app = express();
+
+app.use(express.json())
 
 app.get("/", (req, res) => {
   res.send("api is running");
@@ -17,6 +19,7 @@ app.get("/", (req, res) => {
 
 
 app.use("/api/product", productRoutes);
+app.use("/api/users",userRoutes)
 
 app.use(notFound);
 app.use(errorHandler);
