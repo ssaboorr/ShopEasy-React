@@ -207,7 +207,7 @@ const ProductScreen = ({ type }) => {
                 />
 
                 <Text color="gray.800">{qty}</Text>
-                {qty == 0 ? (
+                {qty == 1 ? (
                   <Icon
                     visibility="hidden"
                     w="5"

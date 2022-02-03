@@ -171,7 +171,7 @@ const products = [
     countInStock: 33,
     rating: 4.3,
     numReviews: 20,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Elite FG",
@@ -192,7 +192,7 @@ const products = [
     countInStock: 55,
     rating: 4.9,
     numReviews: 55,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Mercurial Superfly 8 Pro",
@@ -213,7 +213,7 @@ const products = [
     countInStock: 12,
     rating: 4.8,
     numReviews: 66,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Phantom Gt2 Elite",
@@ -234,7 +234,7 @@ const products = [
     countInStock: 16,
     rating: 3.9,
     numReviews: 28,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Premier 3 FG",
@@ -255,7 +255,7 @@ const products = [
     countInStock: 14,
     rating: 3.3,
     numReviews: 5,
-    type: "football",
+    type: "sports",
   },
   {
     name: "SuperFly 8 Elite",
@@ -272,7 +272,7 @@ const products = [
     countInStock: 29,
     rating: 4.5,
     numReviews: 11,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Tiempo Legend 9",
@@ -289,7 +289,7 @@ const products = [
     countInStock: 0,
     rating: 4.3,
     numReviews: 44,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Vapor",
@@ -306,7 +306,7 @@ const products = [
     countInStock: 22,
     rating: 2.3,
     numReviews: 18,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Air Force 1",
@@ -483,7 +483,7 @@ const products = [
     countInStock: 28,
     rating: 4.4,
     numReviews: 43,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Elite FG",
@@ -504,7 +504,7 @@ const products = [
     countInStock: 22,
     rating: 4.6,
     numReviews: 4,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Mercurial Superfly 8 Pro",
@@ -525,7 +525,7 @@ const products = [
     countInStock: 23,
     rating: 4.9,
     numReviews: 41,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Vapor 14 Elite",
@@ -546,7 +546,7 @@ const products = [
     countInStock: 0,
     rating: 4.6,
     numReviews: 23,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Phantom Gt2 Elite",
@@ -567,7 +567,7 @@ const products = [
     countInStock: 66,
     rating: 4.2,
     numReviews: 25,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Premier 3 FG",
@@ -588,7 +588,7 @@ const products = [
     countInStock: 2,
     rating: 3.8,
     numReviews: 34,
-    type: "football",
+    type: "sports",
   },
   {
     name: "SuperFly 8 Elite",
@@ -605,7 +605,7 @@ const products = [
     countInStock: 22,
     rating: 4.7,
     numReviews: 44,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Tiempo Legend 9",
@@ -622,7 +622,7 @@ const products = [
     countInStock: 6,
     rating: 4.2,
     numReviews: 34,
-    type: "football",
+    type: "sports",
   },
 
   {
@@ -812,7 +812,7 @@ const products = [
     countInStock: 1,
     rating: 2.8,
     numReviews: 14,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Elite FG",
@@ -833,7 +833,7 @@ const products = [
     countInStock: 8,
     rating: 2,
     numReviews: 5,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Mercurial Superfly 8 Pro",
@@ -854,7 +854,7 @@ const products = [
     countInStock: 12,
     rating: 4.6,
     numReviews: 4,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Phantom Gt2 Elite",
@@ -875,7 +875,7 @@ const products = [
     countInStock: 10,
     rating: 4,
     numReviews: 14,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Premier 3 FG",
@@ -896,7 +896,7 @@ const products = [
     countInStock: 2,
     rating: 3,
     numReviews: 4,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Superfly 8 elite",
@@ -913,7 +913,7 @@ const products = [
     countInStock: 22,
     rating: 4,
     numReviews: 3,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Tiempo Legend 9",
@@ -930,7 +930,7 @@ const products = [
     countInStock: 12,
     rating: 2.7,
     numReviews: 41,
-    type: "football",
+    type: "sports",
   },
   {
     name: "Vapor",
@@ -947,7 +947,7 @@ const products = [
     countInStock: 4,
     rating: 1,
     numReviews: 12,
-    type: "football",
+    type: "sports",
   },
 ];
 export default products;

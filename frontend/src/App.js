@@ -42,7 +42,7 @@ const App = () => {
           />
           <Route
             path="/sports"
-            element={<ProductDisplayScreen type="sports" />}
+            element={<ProductDisplayScreen  />}
           />
 
           <Route

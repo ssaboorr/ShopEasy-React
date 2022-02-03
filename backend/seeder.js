@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import colors from "colors";
 import users from "./data/users.js";
-import products from "./data/new_data.js";
+import adidas_products from "./data/new_data.js";
+import nike_products from "./data/nike_products.js";
 import User from "./models/userModel.js";
 import Product from "./models/productModel.js";
 import Order from "./models/orderModel.js";
@@ -21,11 +22,14 @@ const importData = async () => {
     const createdUsers = await User.insertMany(users);
     const adminUser = createdUsers[0]._id;
 
-    const sampleProducts = products.map((product) => {
+    const sampleProductsNike = nike_products.map((product) => {
       return { ...product, user: adminUser };
     });
-
-    await Product.insertMany(sampleProducts);
+    const sampleProductsAdidas = adidas_products.map((product) => {
+      return { ...product, user: adminUser };
+    });
+    await Product.insertMany(sampleProductsNike);
+    await Product.insertMany(sampleProductsAdidas);
 
     console.log("Data Imported".green.inverse);
     process.exit();

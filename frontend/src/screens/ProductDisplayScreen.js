@@ -18,9 +18,8 @@ const ProductDisplayScreen = ({type,category}) => {
     dispatch(listProducts());
   }, []);
 
-  if (type) {
-    products = products.filter((product) => product.type === type);
-  }
+    products = products.filter((product) => product.type === "sports");
+  
 
   // console.log(products);
   return (

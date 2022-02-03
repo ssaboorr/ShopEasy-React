@@ -4,6 +4,7 @@ import { useState } from "react";
 import ContentDrawer from "./ContentDrawer";
 import { Link as RouterLink, useParams } from "react-router-dom";
 import { BsArrowLeftCircle } from "react-icons/bs";
+import NavLink from "../NavLinks";
 
 const Content = () => {
   const [show, setShow] = useState(false);
@@ -72,11 +73,7 @@ const Content = () => {
             Casuals
           </Flex>
         </MenuItem>{" "}
-        <MenuItem url="/kids">
-          <Flex alignItems="center" justifyContent="center" m="2">
-            Deals
-          </Flex>
-        </MenuItem>
+      <NavLink />
       </Box>
     </Flex>
   );
