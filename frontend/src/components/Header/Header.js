@@ -1,7 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 import SlideEx from "./Slide";
 import { useState } from "react";
-import { Flex, Heading, Link, Box, Icon, Text, Button } from "@chakra-ui/react";
+import { Flex, Heading, Link, Box, Icon, Text, Input } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { HiOutlineUser, HiShoppingCart, HiLogin } from "react-icons/hi";
 
@@ -70,6 +70,7 @@ const Header = () => {
           </MenuItem>
         </Flex>
       </Box>
+      <Input size="sm" width="200px" rounded="2xl" placeholder='Search' />
       <Box
         display={{ base: show ? "none" : "none", md: "flex" }}
         width={{ base: "full", md: "auto" }}
