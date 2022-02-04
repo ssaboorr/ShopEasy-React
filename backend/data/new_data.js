@@ -12,7 +12,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Mens Originals",
+    category: "Mens Casuals",
+    gender: "men",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -32,7 +33,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Mens Originals",
+    category: "Mens Casuals",
+    gender: "men",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -52,7 +54,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Mens Originals",
+    category: "Mens Casuals",
+    gender: "men",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -68,7 +71,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Mens Originals",
+    category: "Mens Casuals",
+    gender: "men",
     price: 9000,
     countInStock: 22,
     rating: 4.6,
@@ -87,7 +91,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Mens Originals",
+    category: "Mens Casuals",
+    gender: "men",
     price: 7500,
     countInStock: 22,
     rating: 4.6,
@@ -107,7 +112,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Mens Originals",
+    category: "Mens Casuals",
+    gender: "men",
     price: 6000,
     countInStock: 22,
     rating: 4.6,
@@ -127,7 +133,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Mens Originals",
+    category: "Mens Casuals",
+    gender: "men",
     price: 6200,
     countInStock: 22,
     rating: 4.6,
@@ -147,7 +154,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Mens Originals",
+    category: "Mens Casuals",
+    gender: "men",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -167,7 +175,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women Originals",
+    category: "Women Casuals",
+    gender: "women",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -187,7 +196,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women Originals",
+    category: "Women Casuals",
+    gender: "women",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -207,7 +217,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women Originals",
+    category: "Women Casuals",
+    gender: "women",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -227,7 +238,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women Originals",
+    category: "Women Casuals",
+    gender: "women",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -247,7 +259,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women Originals",
+    category: "Women Casuals",
+    gender: "women",
     price: 5200,
     countInStock: 22,
     rating: 4.6,
@@ -267,7 +280,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women Originals",
+    category: "Women Casuals",
+    gender: "women",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -287,7 +301,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women Originals",
+    category: "Women Casuals",
+    gender: "women",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -307,7 +322,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Men's Football",
+    category: "Mens Sports",
+    gender: "men",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -327,7 +343,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Men's Football",
+    category: "Mens Sports",
+    gender: "men",
     price: 10000,
     countInStock: 22,
     rating: 4.6,
@@ -347,7 +364,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Men's Football",
+    category: "Mens Sports",
+    gender: "men",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -367,7 +385,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Men's Football",
+    category: "Mens Sports",
+    gender: "men",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -387,7 +406,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Men's Football",
+    category: "Mens Sports",
+    gender: "men",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -407,7 +427,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Men's Football",
+    category: "Mens Sports",
+    gender: "men",
     price: 13000,
     countInStock: 22,
     rating: 4.6,
@@ -427,7 +448,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Men's Football",
+    category: "Mens Sports",
+    gender: "men",
     price: 9000,
     countInStock: 22,
     rating: 4.6,
@@ -447,7 +469,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Men's Football",
+    category: "Mens Sports",
+    gender: "men",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -467,7 +490,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "kid's Football",
+    category: "Kids Sports",
+    gender: "kids",
     price: 15000,
     countInStock: 22,
     rating: 4.6,
@@ -487,7 +511,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "kid's Football",
+    category: "Kids Sports",
+    gender: "kids",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -507,7 +532,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "kid's Football",
+    category: "Kids Sports",
+    gender: "kids",
     price: 8000,
     countInStock: 22,
     rating: 4.6,
@@ -527,7 +553,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "kid's Football",
+    category: "Kids Sports",
+    gender: "kids",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -547,7 +574,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "kid's Football",
+    category: "Kids Sports",
+    gender: "kids",
     price: 5000,
     countInStock: 22,
     rating: 4.6,
@@ -567,7 +595,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "kid's Football",
+    category: "Kids Sports",
+    gender: "kids",
     price: 5000,
     countInStock: 22,
     rating: 4.6,
@@ -587,7 +616,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "kid's Football",
+    category: "Kids Sports",
+    gender: "kids",
     price: 4000,
     countInStock: 22,
     rating: 4.6,
@@ -607,7 +637,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Kid's Football",
+    category: "Kids Sports",
+    gender: "kids",
     price: 9500,
     countInStock: 22,
     rating: 4.6,
@@ -626,7 +657,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women's Football",
+    category: "Womens Sports",
+    gender: "women",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -646,7 +678,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women's Football",
+    category: "Womens Sports",
+    gender: "women",
     price: 9000,
     countInStock: 22,
     rating: 4.6,
@@ -666,7 +699,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women's Football",
+    category: "Womens Sports",
+    gender: "women",
     price: 9000,
     countInStock: 22,
     rating: 4.6,
@@ -686,7 +720,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women's Football",
+    category: "Womens Sports",
+    gender: "women",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -706,7 +741,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Women's Football",
+    category: "Womens Sports",
+    gender: "women",
     price: 6000,
     countInStock: 22,
     rating: 4.6,
@@ -726,7 +762,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Kids Originals",
+    category: "Kids Casuals",
+    gender: "kids",
     price: 5100,
     countInStock: 22,
     rating: 4.6,
@@ -746,7 +783,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Kids Originals",
+    category: "Kids Casuals",
+    gender: "kids",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -766,7 +804,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Kids Originals",
+    category: "Kids Casuals",
+    gender: "kids",
     price: 12402,
     countInStock: 22,
     rating: 4.6,
@@ -783,7 +822,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Kids Originals",
+    category: "Kids Casuals",
+    gender: "kids",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -803,7 +843,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Kids Originals",
+    category: "Kids Casuals",
+    gender: "kids",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -820,7 +861,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Kids Originals",
+    category: "Kids Casuals",
+    gender: "kids",
     price: 12000,
     countInStock: 22,
     rating: 4.6,
@@ -840,7 +882,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Kids Originals",
+    category: "Kids Casuals",
+    gender: "kids",
     price: 12550,
     countInStock: 22,
     rating: 4.6,
@@ -860,7 +903,8 @@ const products = [
     description:
       "Etiam cursus condimentum vulputate. Nulla nisi orci, vulputate at dolor et, malesuada ultrices nisi. Ut varius ex ut purus porttitor, a facilisis orci condimentum. Nullam in elit et sapien ornare pellentesque at ac lorem.",
     brand: "Adidas",
-    category: "Kids Originals",
+    category: "Kids Casuals",
+    gender: "kids",
     price: 16000,
     countInStock: 22,
     rating: 4.6,

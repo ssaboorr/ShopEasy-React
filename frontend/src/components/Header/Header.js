@@ -1,22 +1,14 @@
 import { Link as RouterLink } from "react-router-dom";
 import SlideEx from "./Slide";
 import { useState } from "react";
-import {
-  Flex,
-  Heading,
-  Link,
-  Box,
-  Icon,
-  Input,
-  Button,
-} from "@chakra-ui/react";
+import { Flex, Heading, Link, Box, Icon, Text, Button } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { HiOutlineUser, HiShoppingCart, HiLogin } from "react-icons/hi";
 
 import { GoSignIn } from "react-icons/go";
 
 import { Display, MenuItem, ProductMenu } from "./MenuItem";
-import SearchBar from '../Search'
+import SearchBar from "../Search";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -28,7 +20,7 @@ const Header = () => {
       wrap="wrap"
       py="6"
       px="6"
-      bgColor="gray.800"
+      bgColor="white"
       w="100%"
       top="0"
       zIndex="2"
@@ -37,7 +29,7 @@ const Header = () => {
       <Flex align="center" mr="5">
         <Heading
           as="h1"
-          color="whiteAlpha.800"
+          color="gray.800"
           fontWeight="bold"
           size="md"
           letterSpacing="md"
@@ -45,7 +37,7 @@ const Header = () => {
           <Link
             as={RouterLink}
             to="/"
-            color="gray.200"
+            color="gray.800"
             _hover={{ color: "gray.500", textDecor: "none" }}
           >
             ShopEasy
@@ -60,7 +52,23 @@ const Header = () => {
         <SlideEx />
       </Box>
       <Box>
-        {/* <SearchBar /> */}
+        <Flex direction="row">
+          <MenuItem url="/men">
+            <Flex alignItems="center" justifyContent="center" m="2">
+              <Text>Men</Text>
+            </Flex>
+          </MenuItem>
+          <MenuItem url="/women">
+            <Flex alignItems="center" justifyContent="center" m="2">
+              <Text>Women</Text>
+            </Flex>
+          </MenuItem>
+          <MenuItem url="/kids">
+            <Flex alignItems="center" justifyContent="center" m="2">
+              <Text>Kids</Text>
+            </Flex>
+          </MenuItem>
+        </Flex>
       </Box>
       <Box
         display={{ base: show ? "none" : "none", md: "flex" }}

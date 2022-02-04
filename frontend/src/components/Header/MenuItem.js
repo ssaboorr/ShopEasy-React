@@ -8,12 +8,12 @@ export const MenuItem = ({ children, url }) => {
       to={url}
       fontSize="sm"
       letterSpacing="wide"
-      color="gray.200"
+      color="gray.800"
       // fontWeight="bold"
       textTransform="uppercase"
       m="2"
       display="block"
-      _hover={{ color: "whiteAlpha.500" }}
+      _hover={{ color: "gray.500" }}
       mt={{ base: "4", md: "0" }}
     >
       {children}

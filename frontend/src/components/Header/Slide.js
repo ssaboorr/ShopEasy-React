@@ -24,7 +24,7 @@ function SlideEx() {
   
     return (
       <>
-        <Icon marginLeft="10rem" onClick={onToggle} as={HiMenuAlt3} color="white" w="6" h="6" />
+        <Icon marginLeft="10rem" onClick={onToggle} as={HiMenuAlt3} color="black" w="6" h="6" />
   
         <Slide  direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
           <Box borderRadius="2xl" p="40px" color="white" mt="4" bgColor="gray.800" shadow="md">

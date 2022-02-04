@@ -50,6 +50,9 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    gender : {
+      type:String,
+    },
     description: {
       type: String,
       required: true,

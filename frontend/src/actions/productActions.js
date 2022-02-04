@@ -15,6 +15,9 @@ export const listProducts = () => async (dispatch) => {
 
     const { data } = await axios.get("/api/product");
 
+ 
+    // console.log(nike_products);
+
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (err) {
     dispatch({
