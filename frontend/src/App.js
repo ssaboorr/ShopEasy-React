@@ -14,7 +14,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Flex as="main" mt={{lg:"85px",md:"85px",base:"110px"}} minH="xl" bgColor="gray.200">
+      <Flex as="main" mt={{lg:"85px",md:"85px",base:"175px"}} minH="xl" bgColor="gray.200">
         <Routes>
           <Route path="/" element={<HomeScreen />} />
 
