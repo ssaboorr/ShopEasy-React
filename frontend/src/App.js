@@ -9,6 +9,7 @@ import ProductScreen from "./screens/ProductScreen";
 import ProductDisplayScreen from "./screens/ProductDisplayScreen";
 import SearchScreen from "./screens/SearchScreen";
 import CartScreen from "./screens/CartScreen";
+import LoginScreen from "./screens/LoginScreen"
 
 const App = () => {
   return (
@@ -43,6 +44,8 @@ const App = () => {
           <Route path="/search-result" element={<SearchScreen />} />
           <Route path="/cart/:id" element={<CartScreen />} />
           <Route path="/cart" element={<CartScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
+
         </Routes>
       </Flex>
       <Footer />
