@@ -17,7 +17,7 @@ import {
   import { GoSignIn } from "react-icons/go";
 
  
-  import {MenuItem} from "./MenuItem";
+  import MenuItems from "./MenuItem";
 
 function SlideEx() {
     const { isOpen, onToggle } = useDisclosure();
@@ -29,30 +29,30 @@ function SlideEx() {
         <Slide  direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
           <Box borderRadius="2xl" p="40px" color="white" mt="4" bgColor="gray.800" shadow="md">
             <Box width={{ base: "full", md: "auto" }} alignItems="center">
-              <MenuItem url="/">
+              <MenuItems url="/">
                 <Flex alignItems="center" justifyContent="center" m="2">
                   <Icon w="4" h="4" mr="1" as={HiOutlineUser} />
                   User
                 </Flex>
-              </MenuItem>
-              <MenuItem url="/">
+              </MenuItems>
+              <MenuItems url="/">
                 <Flex alignItems="center" justifyContent="center" m="2">
                   <Icon w="4" h="4" mr="1" as={HiShoppingCart} />
                   Cart
                 </Flex>
-              </MenuItem>
-              <MenuItem url="/">
+              </MenuItems>
+              <MenuItems url="/">
                 <Flex alignItems="center" justifyContent="center" m="2">
                   <Icon w="4" h="4" mr="1" as={HiLogin} />
                   Login
                 </Flex>
-              </MenuItem>
-              <MenuItem url="/">
+              </MenuItems>
+              <MenuItems url="/">
                 <Flex alignItems="center" justifyContent="center" m="2">
                   <Icon w="4" h="4" mr="1" as={GoSignIn} />
                   SignIn
                 </Flex>
-              </MenuItem>
+              </MenuItems>
             </Box>
           </Box>
         </Slide>

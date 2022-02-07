@@ -1,7 +1,7 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Link } from "@chakra-ui/react";
 
-export const MenuItem = ({ children, url }) => {
+ const MenuItems = ({ children, url }) => {
   return (
     <Link
       as={RouterLink}
@@ -22,5 +22,6 @@ export const MenuItem = ({ children, url }) => {
 };
 
 
+export default MenuItems
 
 

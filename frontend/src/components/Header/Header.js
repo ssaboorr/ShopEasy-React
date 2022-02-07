@@ -1,17 +1,46 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import SlideEx from "./Slide";
 import { useState } from "react";
-import { Flex, Heading, Link, Box, Icon, Text, Input } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Link,
+  Box,
+  Icon,
+  Text,
+  Input,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+} from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
+import { IoChevronDown } from 'react-icons/io5';
+
 import { HiOutlineUser, HiShoppingCart, HiLogin } from "react-icons/hi";
 
 import { GoSignIn } from "react-icons/go";
 
-import { Display, MenuItem, ProductMenu } from "./MenuItem";
+import MenuItems from "./MenuItem";
 import SearchBar from "../Search";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/userActions";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+
   const [show, setShow] = useState(false);
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+
+    navigate("/login");
+  };
   return (
     <Flex
       as="header"
@@ -53,53 +82,77 @@ const Header = () => {
       </Box>
       <Box>
         <Flex direction="row">
-          <MenuItem url="/men">
+          <MenuItems url="/men">
             <Flex alignItems="center" justifyContent="center" m="2">
               <Text>Men</Text>
             </Flex>
-          </MenuItem>
-          <MenuItem url="/women">
+          </MenuItems>
+          <MenuItems url="/women">
             <Flex alignItems="center" justifyContent="center" m="2">
               <Text>Women</Text>
             </Flex>
-          </MenuItem>
-          <MenuItem url="/kids">
+          </MenuItems>
+          <MenuItems url="/kids">
             <Flex alignItems="center" justifyContent="center" m="2">
               <Text>Kids</Text>
             </Flex>
-          </MenuItem>
+          </MenuItems>
         </Flex>
       </Box>
-      <Input size="sm" width="200px" rounded="2xl" placeholder='Search' />
+      <Input size="sm" width="200px" rounded="2xl" placeholder="Search" />
+
+      {userInfo ? (
+        <Menu>
+          <MenuButton
+            as={Button}
+            rightIcon={<IoChevronDown />}
+            _hover={{ textDecoration: "none", opacity: "0.7" }}
+          >
+            {userInfo.name}
+          </MenuButton>
+          <MenuList url="/login">
+            <MenuItem as={RouterLink} to="/profile">
+              Profile
+            </MenuItem>
+            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+          </MenuList>
+        </Menu>
+      ) : (
+        <MenuItems url="/login">
+          <Flex alignItems="center">
+            <Icon as={HiOutlineUser} w="4" h="4" mr="1" /> Login
+          </Flex>
+        </MenuItems>
+      )}
       <Box
         display={{ base: show ? "none" : "none", md: "flex" }}
         width={{ base: "full", md: "auto" }}
         alignItems="center"
       >
-        <MenuItem url="/">
+        <MenuItems url="/">
           <Flex alignItems="center" justifyContent="center" m="2">
             <Icon w="4" h="4" mr="1" as={HiOutlineUser} />
             User
           </Flex>
-        </MenuItem>
-        <MenuItem url="/cart">
+        </MenuItems>
+        <MenuItems url="/cart">
           <Flex alignItems="center" justifyContent="center" m="2">
             <Icon w="4" h="4" mr="1" as={HiShoppingCart} />
             Cart
           </Flex>
-        </MenuItem>
-        <MenuItem url="/login">
+        </MenuItems>
+        <MenuItems url="/login">
           <Flex alignItems="center" justifyContent="center" m="2">
             <Icon w="4" h="4" mr="1" as={HiLogin} />
             Login
           </Flex>
-        </MenuItem>
-        <MenuItem url="/">
+        </MenuItems>
+        <MenuItems url="/">
           <Flex alignItems="center" justifyContent="center" m="2">
             <Icon w="4" h="4" mr="1" as={GoSignIn} />
             SignIn
           </Flex>
-        </MenuItem>
+        </MenuItems>
       </Box>
     </Flex>
   );
