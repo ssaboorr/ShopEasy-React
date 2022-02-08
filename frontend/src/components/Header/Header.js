@@ -36,6 +36,11 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const userDetails = useSelector((state) => state.userDetails);
+  console.log(userDetails);
+
+  const { user } = userDetails;
+
   const logoutHandler = () => {
     dispatch(logout());
 
@@ -114,7 +119,7 @@ const Header = () => {
                 rightIcon={<IoChevronDown />}
                 _hover={{ textDecoration: "none", opacity: "0.7" }}
               >
-                {userInfo.name}
+                {user.name}
               </MenuButton>
               <MenuList url="/login">
                 <MenuItem as={RouterLink} to="/profile">

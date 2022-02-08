@@ -11,8 +11,10 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getUserDetails } from "../actions/userActions";
+import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import FormContainer from "../components/FormContainer";
+import Message from "../components/Message";
+import { USER_DETAILS_RESET } from "../constants/userConstants";
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
@@ -30,7 +32,8 @@ const ProfileScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  console.log(userInfo);
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
 
   useEffect(() => {
     if (!userInfo) {
@@ -43,7 +46,7 @@ const ProfileScreen = () => {
         setEmail(user.email);
       }
     }
-  }, [user, dispatch, userInfo, navigate]);
+  }, [user, dispatch, userInfo, navigate, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -51,6 +54,10 @@ const ProfileScreen = () => {
       setMessage("Password do Not Match");
     } else {
       //   DISPATCH UPDATE PROFILE ACTION
+      //   dispatch({ type: USER_UPDATE_PROFILE_RESET });
+
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
+      dispatch({ type: USER_DETAILS_RESET });
     }
   };
 
@@ -61,9 +68,10 @@ const ProfileScreen = () => {
           <Heading a="h1" mb="8" fontSize="3xl">
             User Profile
           </Heading>
-          {/* error message */}
-          {/* message */}
-          <form>
+          {error && <Message type="error">{error}</Message>}
+          {message && <Message type="warning">{message}</Message>}
+
+          <form onSubmit={submitHandler}>
             <FormControl id="name">
               <FormLabel>Name</FormLabel>
               <Input
