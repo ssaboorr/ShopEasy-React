@@ -10,6 +10,7 @@ import ProductDisplayScreen from "./screens/ProductDisplayScreen";
 import SearchScreen from "./screens/SearchScreen";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen"
+import RegisterScreen from "./screens/RegisterScreen";
 
 const App = () => {
   return (
@@ -45,6 +46,8 @@ const App = () => {
           <Route path="/cart/:id" element={<CartScreen />} />
           <Route path="/cart" element={<CartScreen />} />
           <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
+
 
         </Routes>
       </Flex>

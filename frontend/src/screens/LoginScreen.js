@@ -35,7 +35,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
+      navigate("/men");
     }
   }, [navigate, redirect, userInfo]);
 
@@ -74,7 +74,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </FormLabel>
-            <Button type="submit" isLoading={loading} mt="4" colorScheme="teal">
+            <Button type="submit" isLoading={loading} mt="4" >
               Login
             </Button>
           </FormControl>
@@ -82,7 +82,7 @@ const Login = () => {
 
         <Flex pt="5">
           <Text fontWeight="semibold">
-            New Customer?{" "}
+            New Customer?
             <Link color="blue" as={RouterLink} to="/register">
               Register here.
             </Link>

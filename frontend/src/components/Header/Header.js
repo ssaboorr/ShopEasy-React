@@ -16,7 +16,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { IoChevronDown } from 'react-icons/io5';
+import { IoChevronDown } from "react-icons/io5";
 
 import { HiOutlineUser, HiShoppingCart, HiLogin } from "react-icons/hi";
 
@@ -99,60 +99,54 @@ const Header = () => {
           </MenuItems>
         </Flex>
       </Box>
-      <Input size="sm" width="200px" rounded="2xl" placeholder="Search" />
+      <Input size="sm" width="300px" rounded="2xl" placeholder="Search" />
 
-      {userInfo ? (
-        <Menu>
-          <MenuButton
-            as={Button}
-            rightIcon={<IoChevronDown />}
-            _hover={{ textDecoration: "none", opacity: "0.7" }}
-          >
-            {userInfo.name}
-          </MenuButton>
-          <MenuList url="/login">
-            <MenuItem as={RouterLink} to="/profile">
-              Profile
-            </MenuItem>
-            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
-          </MenuList>
-        </Menu>
-      ) : (
-        <MenuItems url="/login">
-          <Flex alignItems="center">
-            <Icon as={HiOutlineUser} w="4" h="4" mr="1" /> Login
-          </Flex>
-        </MenuItems>
-      )}
       <Box
         display={{ base: show ? "none" : "none", md: "flex" }}
         width={{ base: "full", md: "auto" }}
         alignItems="center"
       >
-        <MenuItems url="/">
-          <Flex alignItems="center" justifyContent="center" m="2">
-            <Icon w="4" h="4" mr="1" as={HiOutlineUser} />
-            User
+        {userInfo ? (
+          <Flex>
+            <Menu>
+              <MenuButton
+                as={Button}
+                rightIcon={<IoChevronDown />}
+                _hover={{ textDecoration: "none", opacity: "0.7" }}
+              >
+                {userInfo.name}
+              </MenuButton>
+              <MenuList url="/login">
+                <MenuItem as={RouterLink} to="/profile">
+                  Profile
+                </MenuItem>
+                <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+              </MenuList>
+            </Menu>
+
+            <MenuItems url="/cart">
+              <Flex alignItems="center" justifyContent="center" m="2">
+                <Icon w="4" h="4" mr="1" as={HiShoppingCart} />
+                Cart
+              </Flex>
+            </MenuItems>
           </Flex>
-        </MenuItems>
-        <MenuItems url="/cart">
-          <Flex alignItems="center" justifyContent="center" m="2">
-            <Icon w="4" h="4" mr="1" as={HiShoppingCart} />
-            Cart
+        ) : (
+          <Flex>
+            <MenuItems url="/register">
+              <Flex alignItems="center" justifyContent="center" m="2">
+                <Icon w="4" h="4" mr="1" as={GoSignIn} />
+                SignIn
+              </Flex>
+            </MenuItems>
+            <MenuItems url="/login">
+              <Flex alignItems="center" justifyContent="center" m="2">
+                <Icon w="4" h="4" mr="1" as={HiLogin} />
+                Login
+              </Flex>
+            </MenuItems>
           </Flex>
-        </MenuItems>
-        <MenuItems url="/login">
-          <Flex alignItems="center" justifyContent="center" m="2">
-            <Icon w="4" h="4" mr="1" as={HiLogin} />
-            Login
-          </Flex>
-        </MenuItems>
-        <MenuItems url="/">
-          <Flex alignItems="center" justifyContent="center" m="2">
-            <Icon w="4" h="4" mr="1" as={GoSignIn} />
-            SignIn
-          </Flex>
-        </MenuItems>
+        )}
       </Box>
     </Flex>
   );

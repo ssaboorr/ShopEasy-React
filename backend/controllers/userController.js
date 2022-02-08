@@ -1,12 +1,10 @@
-import asyncHandler from "express-async-handler";
-
-import User from "../models/userModel.js";
-import generateToken from "../utils/generateToken.js";
+import asyncHandler from 'express-async-handler';
+import User from '../models/userModel.js';
+import generateToken from '../utils/generateToken.js';
 
 // @desc    Auth user & get token
 // @route   GET /api/users/login
 // @access  public
-
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -21,15 +19,14 @@ const authUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
     });
   } else {
-    res.status(401);
-    throw new Error("Invalid username or password");
+    res.status(401); // Unauthorized
+    throw new Error('Invalid email or password');
   }
 });
 
-// @desc    Get User Profile.
+// @desc    Get user profile
 // @route   GET /api/users/profile
 // @access  private
-
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
@@ -42,37 +39,38 @@ const getUserProfile = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("User Not Found");
+    throw new Error('User not found.');
   }
 });
 
-// @desc    Register User.
-// @route   GET /api/users
+// @desc    Register a new user
+// @route   POST /api/users
 // @access  public
-
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
+
   const userExists = await User.findOne({ email });
 
   if (userExists) {
-    res.status(404);
-    throw new Error("User with is Email already exists, Try logging in..");
+    res.status(400); // BAD REQUEST
+    throw new Error('User already exists');
   }
 
-  const user = User.create({ name, email, password });
+  const user = await User.create({ name, email, password });
 
   if (user) {
-    res.status(101).json({
+    // 201 - created successfully
+    res.status(201).json({
       _id: user._id,
       name: user.name,
-      email: user.password,
-      isAdmin: user.isAdmin,
-      tokem: generateToken(user._id),
+      email: user.email,
+      isAdmin: user.idAdmin,
+      token: generateToken(user._id),
     });
   } else {
-    res.status(400); // Bad Request
-    throw new Error("Invalid Data");
+    res.status(400); // BAD REQUEST
+    throw new Error('Invalid user data');
   }
 });
 
-export { authUser, getUserProfile,registerUser };
+export { authUser, getUserProfile, registerUser };
