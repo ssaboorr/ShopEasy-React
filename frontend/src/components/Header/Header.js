@@ -26,6 +26,12 @@ import MenuItems from "./MenuItem";
 import SearchBar from "../Search";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/userActions";
+import {
+  USER_DETAILS_RESET,
+  USER_LOGIN_RESET,
+  USER_REGISTER_RESET,
+} from "../../constants/userConstants";
+import { PRODUCT_DETAILS_RESET } from "../../constants/productConstants";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -37,15 +43,26 @@ const Header = () => {
   const { userInfo } = userLogin;
 
   const userDetails = useSelector((state) => state.userDetails);
-  console.log(userDetails);
 
   const { user } = userDetails;
 
+  if (user.name) {
+    userInfo.name = user.name;
+  }
+
   const logoutHandler = () => {
     dispatch(logout());
+    dispatch({ type: USER_DETAILS_RESET });
+    dispatch({ type: USER_REGISTER_RESET });
 
     navigate("/login");
   };
+
+  const handleClick = () => {
+    dispatch({ type: PRODUCT_DETAILS_RESET });
+    console.log("working");
+  };
+
   return (
     <Flex
       as="header"
@@ -89,17 +106,23 @@ const Header = () => {
         <Flex direction="row">
           <MenuItems url="/men">
             <Flex alignItems="center" justifyContent="center" m="2">
-              <Text>Men</Text>
+              <Button  bgColor="white" onClick={handleClick}>
+                Men
+              </Button>
             </Flex>
           </MenuItems>
-          <MenuItems url="/women">
+          <MenuItems onClick={() => handleClick()} url="/women">
             <Flex alignItems="center" justifyContent="center" m="2">
-              <Text>Women</Text>
+              <Button bgColor="white" onClick={handleClick}>
+                Women
+              </Button>
             </Flex>
           </MenuItems>
-          <MenuItems url="/kids">
+          <MenuItems onClick={() => handleClick()} url="/kids">
             <Flex alignItems="center" justifyContent="center" m="2">
-              <Text>Kids</Text>
+              <Button bgColor="white" onClick={handleClick}>
+                Kids
+              </Button>
             </Flex>
           </MenuItems>
         </Flex>
@@ -119,7 +142,7 @@ const Header = () => {
                 rightIcon={<IoChevronDown />}
                 _hover={{ textDecoration: "none", opacity: "0.7" }}
               >
-                {user.name}
+                {userInfo.name}
               </MenuButton>
               <MenuList url="/login">
                 <MenuItem as={RouterLink} to="/profile">
