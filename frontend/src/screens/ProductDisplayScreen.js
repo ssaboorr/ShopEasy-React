@@ -8,6 +8,7 @@ import {
   Menu,
   MenuButton,
   MenuList,
+  Spacer,
   MenuItem,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -21,6 +22,8 @@ import Message from "../components/Message";
 const ProductDisplayScreen = ({ gender }) => {
   const [brand, setBrand] = useState(true);
   const [type, setType] = useState(true);
+  const [brandName, setBrandName] = useState("Adidas");
+  const [categoryName, setCategoryName] = useState("Casuals");
 
   const dispatch = useDispatch();
 
@@ -46,28 +49,28 @@ const ProductDisplayScreen = ({ gender }) => {
 
   return (
     <>
-      <Flex my="4" p="5" mt="20px">
-        <Box>
-          <Flex
-            display="flex"
-            flexDirection={{ lg: "row", md: "row", base: "column" }}
-            justify="space-between"
-          >
-            <Heading
-              textTransform="uppercase"
-              as="h2"
-              mb="8"
-              mt="3"
-              fontSize="3xl"
-              color="gray.800"
-            >
-              {gender}
+      <Grid
+        templateColumns={{ lg: "1fr 6fr", md: "1fr 4fr", base: "1fr" }}
+        gap="5"
+      >
+        <Flex mt={{ lg: "50px", md: "50px", base: "10px" }}>
+          <Box mt={{ lg: "100px", md: "50px", base: "10px" }} p="5">
+            <Heading as="h3" fontSize="2xl">
+              Filter
             </Heading>
-            {/* <SearchBar /> */}
-            <Flex>
-              <Flex mx="3" direction="column">
-                <Menu>
-                  <MenuButton as={Button}>Brands</MenuButton>
+            <Spacer h="2" />
+
+            <Flex
+              direction="column"
+              justifyContent="center"
+              alignContent="center"
+            >
+              <Flex my="3" mx="3" direction="column">
+                <Text>Filter By Brands</Text>
+                <Menu mt="2">
+                  <MenuButton mt="2" as={Button}>
+                    Brands
+                  </MenuButton>
                   <MenuList>
                     <MenuItem onClick={() => setBrand(true)}>Nike</MenuItem>
                     <MenuItem onClick={() => setBrand(false)}>Adidas</MenuItem>
@@ -75,9 +78,13 @@ const ProductDisplayScreen = ({ gender }) => {
                 </Menu>
               </Flex>
 
-              <Flex mx="3" direction="column">
-                <Menu>
-                  <MenuButton as={Button}>Category</MenuButton>
+              <Flex my="3" mx="3" direction="column">
+                <Text>Filter By Categories</Text>
+
+                <Menu mt="2">
+                  <MenuButton mt="2" as={Button}>
+                    Category
+                  </MenuButton>
                   <MenuList>
                     <MenuItem onClick={() => setType(false)}>Sports</MenuItem>
                     <MenuItem onClick={() => setType(true)}>Casuals</MenuItem>
@@ -85,48 +92,105 @@ const ProductDisplayScreen = ({ gender }) => {
                 </Menu>
               </Flex>
             </Flex>
-          </Flex>
+          </Box>
+        </Flex>
+        <Flex>
+          <Flex my="4" p="5" mt="20px">
+            <Box>
+              <Flex
+                display="flex"
+                flexDirection={{ lg: "row", md: "row", base: "column" }}
+                justifyContent="space-between"
+              >
+                {brand ? (
+                  <Heading
+                    textTransform="uppercase"
+                    as="h2"
+                    mb="8"
+                    mt="3"
+                    fontSize="3xl"
+                    color="gray.800"
+                  >
+                    {gender} - Nike
+                  </Heading>
+                ) : (
+                  <Heading
+                    textTransform="uppercase"
+                    as="h2"
+                    mb="8"
+                    mt="3"
+                    fontSize="3xl"
+                    color="gray.800"
+                  >
+                    {gender} - Adidas
+                  </Heading>
+                )}
 
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <Message type="error">{error}</Message>
-          ) : (
-            <Grid
-              gridTemplateColumns={{
-                lg: "repeat(4,1fr)",
-                md: "repeat(2,1fr)",
-                base: "1fr",
-              }}
-              justifyContent="space-evenly"
-              gap="5"
-            >
-              {brand
-                ? nike_products.map((product) => (
-                    <Products
-                      // category={category}
-                      key={product._id}
-                      product={product}
-                    />
-                  ))
-                : adidas_products.map((product) => (
-                    <Products
-                      // category={category}
-                      key={product._id}
-                      product={product}
-                    />
-                  ))}
-              {/* {products.map((product) => (
-                <Products
-                  // category={category}
-                  key={product._id}
-                  product={product}
-                />
-              ))} */}
-            </Grid>
-          )}
-        </Box>
-      </Flex>
+                {/* <SearchBar /> */}
+                <Box>
+                  {type ? (
+                    <Heading
+                      textTransform="uppercase"
+                      as="h2"
+                      mb="8"
+                      mt="3"
+                      fontSize="3xl"
+                      marginRight="10"
+                      color="gray.800"
+                    >
+                      Casuals
+                    </Heading>
+                  ) : (
+                    <Heading
+                      textTransform="uppercase"
+                      as="h2"
+                      mb="8"
+                      mt="3"
+                      marginRight="10"
+                      fontSize="3xl"
+                      color="gray.800"
+                    >
+                      Sports
+                    </Heading>
+                  )}
+                </Box>
+              </Flex>
+
+              {loading ? (
+                <Loader />
+              ) : error ? (
+                <Message type="error">{error}</Message>
+              ) : (
+                <Grid
+                  gridTemplateColumns={{
+                    lg: "repeat(4,1fr)",
+                    md: "repeat(2,1fr)",
+                    base: "1fr",
+                  }}
+                  justifyContent="space-evenly"
+                  gap="5"
+                >
+                  {brand
+                    ? nike_products.map((product) => (
+                        <Products
+                          // category={category}
+                          key={product._id}
+                          product={product}
+                        />
+                      ))
+                    : adidas_products.map((product) => (
+                        <Products
+                          // category={category}
+                          key={product._id}
+                          product={product}
+                        />
+                      ))}
+                </Grid>
+              )}
+            </Box>
+          </Flex>
+        </Flex>
+      </Grid>
     </>
   );
 };
