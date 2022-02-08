@@ -63,164 +63,168 @@ const ProductScreen = ({ type }) => {
 
   return (
     <>
-      <Flex
-        m="4"
-        p="5"
-        display={{ base: "none", md: "block", sm: "none" }}
-        mb="5"
-      >
-        <Button
-          bgColor="gray.800"
-          colorScheme="teal"
-          my="2"
-          mx="3"
-          onClick={handleBack}
-        >
-          <Icon color="gray.200" w="4" h="4" as={BsArrowLeftCircle} />
-        </Button>
-      </Flex>
+      <Flex mt="70px" direction={{ lg: "row", md: "row", base: "column" }}>
+        <Flex m="4" p="5" mb="5" mt="20px">
+          <Button
+            bgColor="gray.800"
+            colorScheme="teal"
+            my="2"
+            mx="3"
+            onClick={handleBack}
+          >
+            <Icon color="gray.200" w="4" h="4" mr="3" as={BsArrowLeftCircle} />
+            Back
+          </Button>
+        </Flex>
 
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message type="error">{error}</Message>
-      ) : (
-        <Grid
-          templateColumns={{ sm: "2fr", lg: "6fr 3fr 2fr" }}
-          gap="10"
-          m="3"
-          p="3"
-        >
-          <Flex flexDirection="column" gap="2">
-            {image ? (
-              <Image src={image} alt={product.name} />
-            ) : (
-              <Image src={product.image1} alt={product.name} />
-            )}
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message type="error">{error}</Message>
+        ) : (
+          <Grid
+            templateColumns={{ sm: "2fr", lg: "6fr 3fr 2fr" }}
+            gap="10"
+            m="3"
+            p="3"
+          >
+            <Flex flexDirection="column" gap="2">
+              {image ? (
+                <Image src={image} alt={product.name} />
+              ) : (
+                <Image src={product.image1} alt={product.name} />
+              )}
 
-            <Flex flexDirection="row" wrap="wrap">
-              <Box
-                display="flex"
-                flexDirection="row"
-                wrap="wrap"
-                width={{ lg: "120px", md: "90px", sm: "70px", base: "50px" }}
-              >
-                <Image
-                  onClick={() => setImage(product.image1)}
-                  my="3"
-                  src={product.image1}
-                  alt={product.name}
-                />
-                <Image
-                  onClick={() => setImage(product.image2)}
-                  my="3"
-                  src={product.image2}
-                  alt={product.name}
-                />
-                <Image
-                  onClick={() => setImage(product.image3)}
-                  my="3"
-                  src={product.image3}
-                  alt={product.name}
-                />
-                <Image
-                  onClick={() => setImage(product.image4)}
-                  my="3"
-                  src={product.image4}
-                  alt={product.name}
-                />
-              </Box>
+              <Flex flexDirection="row" wrap="wrap">
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  wrap="wrap"
+                  width={{ lg: "120px", md: "90px", sm: "70px", base: "50px" }}
+                >
+                  <Image
+                    onClick={() => setImage(product.image1)}
+                    my="3"
+                    src={product.image1}
+                    alt={product.name}
+                  />
+                  <Image
+                    onClick={() => setImage(product.image2)}
+                    my="3"
+                    src={product.image2}
+                    alt={product.name}
+                  />
+                  <Image
+                    onClick={() => setImage(product.image3)}
+                    my="3"
+                    src={product.image3}
+                    alt={product.name}
+                  />
+                  <Image
+                    onClick={() => setImage(product.image4)}
+                    my="3"
+                    src={product.image4}
+                    alt={product.name}
+                  />
+                </Box>
+              </Flex>
             </Flex>
-          </Flex>
 
-          {/* Column two */}
-          <Flex direction="column">
-            <Heading as="h5" fontSize="base" color="gray.700">
-              {product.brand}
-            </Heading>
-            <Heading as="h2" fontSize="2xl" color="gray.500">
-              {product.name}
-            </Heading>
-            <Rating
-              value={product.rating}
-              text={`${product.numReviews} reviews`}
-            />
-            <Heading
-              as="h4"
-              my="5"
-              fontSize="4xl"
-              fontweight="bold"
-              color="teal.600"
-            >
-              ₹{product.price}
-            </Heading>
-            <Text color="gray.700">{product.description}</Text>
-          </Flex>
-
-          {/* Column three */}
-          <Flex direction="column">
-            <Flex justifyContent="space-between">
-              <Text color="gray.700">Price:</Text>
-              <Text color="gray.700" fontWeight="bold">
+            {/* Column two */}
+            <Flex direction="column">
+              <Heading as="h5" fontSize="base" color="gray.700">
+                {product.brand}
+              </Heading>
+              <Heading as="h2" fontSize="2xl" color="gray.500">
+                {product.name}
+              </Heading>
+              <Rating
+                value={product.rating}
+                text={`${product.numReviews} reviews`}
+              />
+              <Heading
+                as="h4"
+                my="5"
+                fontSize="4xl"
+                fontweight="bold"
+                color="teal.600"
+              >
                 ₹{product.price}
-              </Text>
-            </Flex>
-            <Flex justifyContent="space-between">
-              <Text color="gray.700">Status:</Text>
-              <Text color="gray.700">
-                {product.countInStock > 0 ? "In stock" : "Not available"}
-              </Text>
+              </Heading>
+              <Text color="gray.700">{product.description}</Text>
             </Flex>
 
-            <Flex justifyContent="space-between">
-              <Text color="gray.700">Size:</Text>
+            {/* Column three */}
+            <Flex direction="column">
+              <Flex justifyContent="space-between">
+                <Text color="gray.700">Price:</Text>
+                <Text color="gray.700" fontWeight="bold">
+                  ₹{product.price}
+                </Text>
+              </Flex>
+              <Flex justifyContent="space-between">
+                <Text color="gray.700">Status:</Text>
+                <Text color="gray.700">
+                  {product.countInStock > 0 ? "In stock" : "Not available"}
+                </Text>
+              </Flex>
 
-              <Select
-                color="gray.800"
-                width="20"
-                onChange={(e) => setSize(e.target.value)}
-              >
-                {[4, 5, 6, 7, 8, 9].map((i) => (
-                  <option key={i} value={i}>
-                    {i}
-                  </option>
-                ))}
-              </Select>
-            </Flex>
-            <Divider />
-            {product.countInStock > 0 && (
-              <Flex justifyContent="space-between" py="2">
-                <Text color="gray.800">Qty:</Text>
+              <Flex justifyContent="space-between">
+                <Text color="gray.700">Size:</Text>
 
-                <Icon
-                  w="5"
-                  h="5"
-                  marginLeft="80px"
-                  color="black"
-                  as={BiPlus}
-                  onClick={inc}
-                />
+                <Select
+                  color="gray.800"
+                  width="20"
+                  onChange={(e) => setSize(e.target.value)}
+                >
+                  {[4, 5, 6, 7, 8, 9].map((i) => (
+                    <option key={i} value={i}>
+                      {i}
+                    </option>
+                  ))}
+                </Select>
+              </Flex>
+              <Divider />
+              {product.countInStock > 0 && (
+                <Flex justifyContent="space-between" py="2">
+                  <Text color="gray.800">Qty:</Text>
 
-                <Text color="gray.800">{qty}</Text>
-                {qty == 1 ? (
                   <Icon
-                    visibility="hidden"
                     w="5"
                     h="5"
+                    marginLeft="80px"
                     color="black"
-                    as={BiMinus}
-                    onClick={dec}
+                    as={BiPlus}
+                    onClick={inc}
                   />
-                ) : (
-                  <Icon w="5" h="5" color="black" as={BiMinus} onClick={dec} />
-                )}
-              </Flex>
-            )}
 
-            <CartModal qty={qty} product={product} id={id} size={size} />
-          </Flex>
-        </Grid>
-      )}
+                  <Text color="gray.800">{qty}</Text>
+                  {qty == 1 ? (
+                    <Icon
+                      visibility="hidden"
+                      w="5"
+                      h="5"
+                      color="black"
+                      as={BiMinus}
+                      onClick={dec}
+                    />
+                  ) : (
+                    <Icon
+                      w="5"
+                      h="5"
+                      color="black"
+                      as={BiMinus}
+                      onClick={dec}
+                    />
+                  )}
+                </Flex>
+              )}
+
+              <CartModal qty={qty} product={product} id={id} size={size} />
+            </Flex>
+          </Grid>
+        )}
+      </Flex>
     </>
   );
 };
