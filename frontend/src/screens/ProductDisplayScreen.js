@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Products from "../components/Products";
+import { ProductCard, Products } from "../components/Products";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader";
@@ -167,8 +167,8 @@ const ProductDisplayScreen = ({ gender }) => {
                     md: "repeat(2,1fr)",
                     base: "1fr",
                   }}
-                  justifyContent="space-evenly"
-                  gap="5"
+                  justifyContent="space-between"
+                  gap="2"
                 >
                   {brand
                     ? nike_products.map((product) => (
@@ -177,6 +177,7 @@ const ProductDisplayScreen = ({ gender }) => {
                           key={product._id}
                           product={product}
                         />
+                        // <ProductCard key={product._id} product={product} />
                       ))
                     : adidas_products.map((product) => (
                         <Products

@@ -12,6 +12,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link as RouterLink } from "react-router-dom";
 
 
+
 export const HomeBannerOne = () => {
   return (
    <Flex width="auto">

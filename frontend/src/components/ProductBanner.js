@@ -1,6 +1,6 @@
 import { Box, Divider, Flex, Grid, Heading, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import Product from "./Products";
+import {ProductCard,Products} from "./Products";
 import axios from "axios";
 
 export const Banner1 = ({ type }) => {
@@ -22,7 +22,7 @@ export const Banner1 = ({ type }) => {
 
   return (
     <>
-      <Box display="flex" flexDirection="row" gap="5" justify="flex-start">
+      <Box  display="flex" flexDirection="row" gap="5" justify="flex-start" wrap="wrap">
         <Heading as="h2" color="gray.800" fontSize="3xl">
           Trending In Football
         </Heading>
@@ -31,12 +31,13 @@ export const Banner1 = ({ type }) => {
       <Grid
         gridTemplateColumns={{
           lg: "repeat(4,1fr)",
-          md: "repeat(3,1fr)",
+          md: "repeat(2,1fr)",
           base: "2fr",
         }}
       >
         {product.map((prod) => (
-          <Product type="fashion" key={prod._id} product={prod} />
+          <Products type="fashion" key={prod._id} product={prod} />
+          // <ProductCard key={prod._id} product={prod} />
         ))}
       </Grid>
     </>
@@ -71,9 +72,9 @@ export const Banner2 = ({ type }) => {
         justifyContent="space-evenly"
         gap="5"
       >
-        {product.map((prod) => (
+        {/* {product.map((prod) => (
           <Product type="fashion" key={prod._id} product={prod} />
-        ))}
+        ))} */}
       </Grid>
     </>
   );
@@ -106,9 +107,9 @@ export const Banner3 = ({ type }) => {
           base: "1fr",
         }}
       >
-        {product.map((prod) => (
+        {/* {product.map((prod) => (
           <Product type="fashion" key={prod._id} product={prod} />
-        ))}
+        ))} */}
       </Grid>
     </>
   );
