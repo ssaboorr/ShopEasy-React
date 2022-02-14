@@ -13,32 +13,46 @@ import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import { saveShippingAddress } from "../actions/cartActions";
 import { CART_SAVE_SHIPPING_ADDRESS } from "../constants/cartConstants";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 const ShippingScreen = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalcode] = useState("");
-  const [country, setCountry] = useState("");
+  const cart = useSelector((state) => state.cart);
+  const { shippingAddress } = cart;
+
+  console.log(shippingAddress)
+
+  const [address, setAddress] = useState(shippingAddress.address || "");
+  const [city, setCity] = useState(shippingAddress.city || "");
+  const [postalCode, setPostalcode] = useState(shippingAddress.postalCode || "");
+  const [country, setCountry] = useState(shippingAddress.country || "");
 
   const submitHandler = (e) => {
     console.log("form submmitted");
     e.preventDefault();
-    dispatch(saveShippingAddress({
-        address,city,postalCode,country
-    }));
-    navigate('/payments')
+    dispatch(
+      saveShippingAddress({
+        address,
+        city,
+        postalCode,
+        country,
+      })
+    );
+    navigate("/payments");
   };
 
   return (
     <Flex
+      mt="10"
       w={{ lg: "full", md: "full", base: "full" }}
       alignItems="center"
       justifyContent="center"
+      py="5"
     >
       <FormContainer>
+        <CheckoutSteps step1 step2 />
         <Heading as="h1" mb="8" fontSize="3xl">
           Shipping
         </Heading>
