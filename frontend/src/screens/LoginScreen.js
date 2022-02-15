@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import {
   Link as RouterLink,
   useSearchParams,
   useNavigate,
-} from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
   Flex,
@@ -15,26 +15,26 @@ import {
   Input,
   Link,
   Spacer,
-} from '@chakra-ui/react';
-import Message from '../components/Message';
-import FormContainer from '../components/FormContainer';
-import { login } from '../actions/userActions';
+} from "@chakra-ui/react";
+import Message from "../components/Message";
+import FormContainer from "../components/FormContainer";
+import { login } from "../actions/userActions";
 
 const LoginScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
-  let redirect = searchParams.get('redirect') || '/';
+  let redirect = searchParams.get("redirect") || "/";
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
   useEffect(() => {
     if (userInfo) {
-      navigate(`/${redirect}`);
+      navigate(redirect.length > 1 ? `/${redirect}` : `${redirect}`);
     }
   }, [navigate, redirect, userInfo]);
 
@@ -82,7 +82,7 @@ const LoginScreen = () => {
 
         <Flex pt="5">
           <Text fontWeight="semibold">
-            New Customer?{' '}
+            New Customer?{" "}
             <Link as={RouterLink} to="/register">
               Register
             </Link>

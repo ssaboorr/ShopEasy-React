@@ -54,7 +54,11 @@ const PlaceOrderScreen = () => {
     <Flex mt="10" w="full" direction="column" py="5">
       <CheckoutSteps step1 step2 step3 step4 />
 
-      <Grid templateColumns="3fr 2fr" gap="20" p="5">
+      <Grid
+        templateColumns={{ lg: "3fr 2fr", md: "3fr 2fr", base: "1fr" }}
+        gap="20"
+        p="5"
+      >
         {/* Column 1 */}
         <Flex direction="column">
           <Box borderBottom="2px" py="6" borderColor="gray.400">
@@ -92,6 +96,7 @@ const PlaceOrderScreen = () => {
                   {cart.cartItems.map((item, idx) => (
                     <Flex
                       key={idx}
+                      direction="row"
                       alignItems="center"
                       justifyContent="space-between"
                       wrap="wrap"

@@ -33,7 +33,6 @@ const OrderScreen = () => {
   const orderPay = useSelector((state) => state.orderPay);
   const { loadin: loadingPay, success: successPay } = orderPay;
 
-  console.log(order);
   if (!loading) {
     order.itemsPrice =
       order &&
@@ -69,6 +68,8 @@ const OrderScreen = () => {
   }, [dispatch, orderId, successPay, order]);
 
   const successPaymentHandler = (paymentResult) => {
+    console.log(paymentResult);
+
     dispatch(payOrder(orderId, paymentResult));
   };
 
@@ -78,7 +79,10 @@ const OrderScreen = () => {
     <Message type="error">{error}</Message>
   ) : (
     <Flex w="full" py="5" mt="10" direction="column">
-      <Grid templateColumns="3fr 2fr" gap="20">
+      <Grid
+        templateColumns={{ lg: "3fr 2fr", md: "3fr 2fr", base: "1fr" }}
+        gap="20"
+      >
         {/* Column 1 */}
 
         <Flex direction="column" p="5">
@@ -155,8 +159,10 @@ const OrderScreen = () => {
                   {order.orderItems.map((item, idx) => (
                     <Flex
                       key={idx}
+                      direction="row"
                       alignItems="center"
                       justifyContent="space-between"
+                      wrap="wrap"
                     >
                       <Flex py="2" alignItems="center">
                         <Image

@@ -33,11 +33,10 @@ const CartScreen = () => {
   const { id: productId } = useParams();
   let qty = searchParams.get("qty");
 
-
   const cart = useSelector((state) => state.cart);
 
   const { cartItems } = cart;
-  console.log(cartItems)
+  console.log(cartItems);
 
   useEffect(() => {
     if (productId) {
@@ -55,15 +54,18 @@ const CartScreen = () => {
 
   console.log(cartItems);
 
-  // cartItems.map((item) => console.log(item.image));
-
   return (
-    <Grid gridTemplateColumns={{ lg: "3", md: "2", base: "1" }}>
-      <Box>
-        <Heading m="3" p="3" color="gray.800" mb="8">
-          Shopping Cart
-        </Heading>
-        <Flex>
+    <Flex w="full" py="5" direction="column">
+      <Grid
+        templateColumns={{ lg: "3fr 2fr", md: "3fr 2fr", base: "1fr" }}
+        p="5"
+        gap="20"
+      >
+        <Box>
+          <Heading m="3" p="3" color="gray.800" mb="8">
+            Shopping Cart
+          </Heading>
+
           {cartItems.length === 0 ? (
             <Message>
               Your Cart is Empty..
@@ -72,97 +74,83 @@ const CartScreen = () => {
               </Link>
             </Message>
           ) : (
-            <Grid
-              templateColumns={{ lg: "6fr 2fr", md: "4fr 1fr", base: "1fr" }}
-              gap="15"
-              marginLeft="3rem"
-              w="full"
-            >
-              <Flex direction="column">
+            <Flex p="5" m="5" direction="column">
+              <Box borderBottom="1px" py="2" borderColor="gray.300">
+                <Heading as="h2" fontSize="xl" fontWeight="semibold" mb="3">
+                  Items In Cart
+                </Heading>
+              </Box>
+              <Box py="5">
                 {cartItems.map((item) => (
-                  <Grid
+                  <Flex
                     key={item.product}
-                    size="100%"
                     alignItems="center"
                     justifyContent="space-between"
-                    borderBottom="2px"
-                    borderColor="gray.600"
-                    py="4"
-                    px="2"
-                    rounded="lg"
-                    templateColumns={{
-                      lg: "4fr 2fr",
-                      md: "2fr",
-                      base: "1fr",
-                    }}
-                    _hover={{ bgColor: "gray.300" }}
+                    direction="row"
+                    wrap="wrap"
                   >
-                    <Grid templateColumns="2fr 2fr">
-                      {/* Product Image */}
+                    <Flex
+                      direction="row"
+                      wrap="wrap"
+                      py="2"
+                      alignItems="center"
+                    >
                       <Image
                         src={item.image}
                         alt={item.name}
                         borderRadius="lg"
-                        height="200"
+                        height="200px"
                         width="200px"
                         objectFit="cover"
                         m="3"
-                      />
-                      {/* Product Name */}
+                      />{" "}
+                      <Link
+                        mx="3"
+                        as={RouterLink}
+                        to={`/products/${item.product}`}
+                        fontWeight="medium"
+                        fontSize="xl"
+                      >
+                        {item.name}
+                      </Link>
+                    </Flex>
+                    <Flex>
+                      <Text
+                        mx="4"
+                        color="blue.600"
+                        fontWeight="bold"
+                        fontSize="2xl"
+                      >
+                        ₹{item.price}
+                      </Text>
+                    </Flex>
 
-                      <Flex direction="column">
-                        <Text
-                          mx="4"
-                          mt="5"
-                          fontSize="2xl"
-                          color="gray.800"
-                          fontWeight="bold"
-                        >
-                          <Link as={RouterLink} to={`/product/${item.product}`}>
-                            {item.name}
-                          </Link>
-                        </Text>
-                        {/* Product Price */}
-                        <Text
-                          mx="4"
-                          color="blue.600"
-                          fontWeight="bold"
-                          fontSize="2xl"
-                        >
-                          ₹{item.price}
-                        </Text>
-                      </Flex>
-                    
-                    </Grid>
+                    <Flex
+                      direction="row"
+                      wrap="wrap"
+                      justifyContent="center"
+                      alignItems="center"
+                    >
+                      <Text>Qty:</Text>
+                      {/* Quantity Selet Box */}
+                      <Select
+                        color="gray.800"
+                        value={item.qty}
+                        width="20"
+                        onChange={(e) =>
+                          dispatch(addToCart(+e.target.value, item.product))
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((i) => (
+                          <option key={i + 1} value={i + 1}>
+                            {i + 1}
+                          </option>
+                        ))}
+                      </Select>
+                    </Flex>
 
-                    <Flex direction="column">
-                      <Flex direction="row" justifyContent="space-between">
-                        <Text>Size: </Text>
-                        <Text mx="3">UK {item.size}</Text>
-                      </Flex>
-                      <Flex direction="row" justifyContent="space-between">
-                        <Text>Qty:</Text>
-                        {/* Quantity Selet Box */}
-                        <Select
-                          color="gray.800"
-                          value={item.qty}
-                          width="20"
-                          onChange={(e) =>
-                            dispatch(addToCart(+e.target.value, item.product))
-                          }
-                        >
-                          {[...Array(item.countInStock).keys()].map((i) => (
-                            <option key={i + 1} value={i + 1}>
-                              {i + 1}
-                            </option>
-                          ))}
-                        </Select>
-                      </Flex>
-
-                      {/* Delete Button */}
-
+                    <Flex justifyContent="center" alignItems="center">
                       <Button
-                        mt="6"
                         type="button"
                         colorScheme="red"
                         bgColor="gray.800"
@@ -171,60 +159,81 @@ const CartScreen = () => {
                         <Icon color="whiteAlpha.400" as={IoTrashBinSharp} />
                       </Button>
                     </Flex>
-                  </Grid>
+                  </Flex>
                 ))}
-              </Flex>
-
-              <Flex
-                direction="column"
-                border="1px"
-                borderWidth="2"
-                borderColor="gray.600"
-                rounded="md"
-                p="5"
-                h="48"
-                justifyContent="space-between"
-              >
-                <Flex direction="column">
-                  <Heading color="gray.800" as="h2" fontSize="2xl" mb="2">
-                    Subtotal (
-                    {cartItems.reduce(
-                      (acc, currVal) => acc + (+currVal.qty || 1),
-                      0
-                    )}
-                    ) itme(s)
-                  </Heading>
-                  <Text
-                    fontWeight="bold"
-                    fontSize="2xl"
-                    color="blue.600"
-                    mb="4"
-                  >
-                    ₹
-                    {cartItems.reduce(
-                      (acc, currVal) =>
-                        acc + (currVal.qty || 1) * +currVal.price,
-                      0
-                    )}
-                  </Text>
-                  <Button
-                    type="button"
-                    disabled={cartItems.length === 0}
-                    size="lg"
-                    colorScheme="teal"
-                    bgColor="gray.800"
-                    onClick={checkoutHandler}
-                    color="gray.200"
-                  >
-                    Proceed To Checkout
-                  </Button>
-                </Flex>
-              </Flex>
-            </Grid>
+              </Box>
+            </Flex>
           )}
+        </Box>
+
+        {/* Column 2 */}
+
+        <Flex
+          direction="column"
+          bgColor="white"
+          justifyContent="space-between"
+          py="8"
+          px="8"
+          m="10"
+          shadow="md"
+          rounded="lg"
+          borderColor="gray.300"
+        >
+          <Box>
+            <Heading mb="6" as="h2" fontSize="3xl" fontWeight="bold">
+              Order Summary
+            </Heading>
+            <Flex
+              borderBottom="1px"
+              py="2"
+              borderColor="gray.200"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Heading color="gray.800" as="h2" fontSize="2xl" mb="2">
+                Number of Items:
+              </Heading>
+              <Text fontSize="2xl">
+                {" "}
+                {cartItems.reduce(
+                  (acc, currVal) => acc + (+currVal.qty || 1),
+                  0
+                )}
+              </Text>
+            </Flex>
+
+            <Flex
+              my="3"
+              borderBottom="1px"
+              py="2"
+              borderColor="gray.200"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Text fontSize="2xl">Subtotal:</Text>
+              <Text fontWeight="bold" fontSize="2xl" color="blue.600">
+                ₹
+                {cartItems.reduce(
+                  (acc, currVal) => acc + (currVal.qty || 1) * +currVal.price,
+                  0
+                )}
+              </Text>
+            </Flex>
+          </Box>
+          <Button
+            type="button"
+            disabled={cartItems.length === 0}
+            size="lg"
+            colorScheme="teal"
+            bgColor="gray.800"
+            onClick={checkoutHandler}
+            color="gray.200"
+          >
+            Proceed To Checkout
+          </Button>
         </Flex>
-      </Box>
-    </Grid>
+      </Grid>
+    </Flex>
   );
 };
 
