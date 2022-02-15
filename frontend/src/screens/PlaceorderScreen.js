@@ -19,7 +19,6 @@ const PlaceOrderScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  //   console.log(cart);
   cart.itemsPrice = cart.cartItems.reduce(
     (acc, curVal) => acc + curVal.price * curVal.qty,
     0
@@ -30,11 +29,8 @@ const PlaceOrderScreen = () => {
   cart.totalPrice = cart.shippingPrice + cart.taxPrice + cart.itemsPrice;
 
   const orderCreate = useSelector((state) => state.orderCreate);
-  console.log(orderCreate);
   const { order, success, error } = orderCreate;
-  // console.log(orderCreate);
 
-  // console.log(cart);
   const placeOrderHandler = () => {
     dispatch(
       createOrder({
@@ -49,11 +45,9 @@ const PlaceOrderScreen = () => {
     );
   };
 
-  // console.log(order);
   useEffect(() => {
     if (success) {
       navigate(`/order/${order._id}`);
-      // console.log("order Created");
     }
   }, [success]);
   return (
