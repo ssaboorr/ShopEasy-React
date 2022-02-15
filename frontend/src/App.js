@@ -9,43 +9,38 @@ import ProductScreen from "./screens/ProductScreen";
 import ProductDisplayScreen from "./screens/ProductDisplayScreen";
 import SearchScreen from "./screens/SearchScreen";
 import CartScreen from "./screens/CartScreen";
-import LoginScreen from "./screens/LoginScreen"
+import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import ShippingScreen from "./screens/ShippingScreen";
-import PaymentScreen from "./screens/PaymentScreen"
+import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceorderScreen";
-
+import OrderScreen from "./screens/OrderScreen";
 
 const App = () => {
   return (
     <div>
       <Header />
-      <Flex as="main" mt={{lg:"85px",md:"85px",base:"175px"}} minH="xl" bgColor="gray.200">
+      <Flex
+        as="main"
+        mt={{ lg: "85px", md: "85px", base: "175px" }}
+        minH="xl"
+        bgColor="gray.200"
+      >
         <Routes>
           <Route path="/" element={<HomeScreen />} />
 
           <Route path="/product/:id" element={<ProductScreen />} />
 
-          <Route
-            path="/men"
-            element={
-              <ProductDisplayScreen gender="men"  />
-            }
-          />
+          <Route path="/men" element={<ProductDisplayScreen gender="men" />} />
           <Route
             path="/women"
-            element={
-              <ProductDisplayScreen gender="women"  />
-            }
+            element={<ProductDisplayScreen gender="women" />}
           />
           <Route
             path="/kids"
-            element={
-              <ProductDisplayScreen gender="kids"  />
-            }
+            element={<ProductDisplayScreen gender="kids" />}
           />
-         
 
           <Route path="/search-result" element={<SearchScreen />} />
           <Route path="/cart/:id" element={<CartScreen />} />
@@ -57,11 +52,7 @@ const App = () => {
           <Route path="/payments" element={<PaymentScreen />} />
 
           <Route path="/placeorder" element={<PlaceOrderScreen />} />
-
-
-
-
-
+          <Route path="/orders/:id" element={<OrderScreen />} />
         </Routes>
       </Flex>
       <Footer />
