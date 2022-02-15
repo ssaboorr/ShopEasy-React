@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   Button,
   Flex,
@@ -12,8 +12,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
+import { createOrder } from "../actions/orderActions";
+import { useEffect } from "react";
 
 const PlaceOrderScreen = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   //   console.log(cart);
   cart.itemsPrice = cart.cartItems.reduce(
@@ -25,9 +29,33 @@ const PlaceOrderScreen = () => {
   cart.taxPrice = (18 * cart.itemsPrice) / 100;
   cart.totalPrice = cart.shippingPrice + cart.taxPrice + cart.itemsPrice;
 
+  const orderCreate = useSelector((state) => state.orderCreate);
+  console.log(orderCreate);
+  const { order, success, error } = orderCreate;
+  // console.log(orderCreate);
+
+  // console.log(cart);
   const placeOrderHandler = () => {
-    console.log("Placer order");
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
+    );
   };
+
+  // console.log(order);
+  useEffect(() => {
+    if (success) {
+      navigate(`/order/${order._id}`);
+      // console.log("order Created");
+    }
+  }, [success]);
   return (
     <Flex mt="10" w="full" direction="column" py="5">
       <CheckoutSteps step1 step2 step3 step4 />
@@ -179,13 +207,15 @@ const PlaceOrderScreen = () => {
             </Flex>
           </Box>
           <Button
-          size="lg"
-          textTransform="uppercase"
-          colorScheme="yellow"
-          type="button"
-          disabled={cart.cartItems === 0}
-          onClick={placeOrderHandler}
-          >Place Order</Button>
+            size="lg"
+            textTransform="uppercase"
+            colorScheme="yellow"
+            type="button"
+            disabled={cart.cartItems === 0}
+            onClick={placeOrderHandler}
+          >
+            Place Order
+          </Button>
         </Flex>
       </Grid>
     </Flex>
