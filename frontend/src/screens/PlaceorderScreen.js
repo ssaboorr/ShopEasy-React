@@ -24,7 +24,7 @@ const PlaceOrderScreen = () => {
     0
   );
 
-  cart.shippingPrice = cart.shippingPrice < 10000 ? 1000 : 0;
+  cart.shippingPrice = cart.itemsPrice < 1000 ? 1000 : 0;
   cart.taxPrice = (18 * cart.itemsPrice) / 100;
   cart.totalPrice = cart.shippingPrice + cart.taxPrice + cart.itemsPrice;
 
