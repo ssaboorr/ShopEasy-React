@@ -18,7 +18,11 @@ import Loader from "../components/Loader";
 import { getOrderDetails, payOrder } from "../actions/orderActions";
 import axios from "axios";
 import { useState } from "react";
-import { ORDER_PAY_RESET } from "../constants/orderConstants";
+import {
+  ORDER_DETAILS_RESET,
+  ORDER_PAY_RESET,
+} from "../constants/orderConstants";
+import { CART_ITEM_RESET } from "../constants/cartConstants";
 
 const OrderScreen = () => {
   const dispatch = useDispatch();
@@ -43,6 +47,7 @@ const OrderScreen = () => {
   }
 
   useEffect(() => {
+    dispatch({ type: ORDER_DETAILS_RESET });
     const addPaypalScript = async () => {
       const { data: clientId } = await axios.get("/api/config/paypal");
       const script = document.createElement("script");
@@ -71,6 +76,7 @@ const OrderScreen = () => {
     console.log(paymentResult);
 
     dispatch(payOrder(orderId, paymentResult));
+    dispatch({ type: CART_ITEM_RESET });
   };
 
   return loading ? (

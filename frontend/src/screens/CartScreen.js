@@ -24,6 +24,7 @@ import { BiPlus, BiMinus } from "react-icons/bi";
 
 import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../actions/cartActions";
+import { CART_ITEM_RESET } from "../constants/cartConstants";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const CartScreen = () => {
 
   const { id: productId } = useParams();
   let qty = searchParams.get("qty");
+
 
   const cart = useSelector((state) => state.cart);
 
@@ -52,7 +54,7 @@ const CartScreen = () => {
     navigate("/login?redirect=shipping");
   };
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <Flex w="full" py="5" direction="column">
