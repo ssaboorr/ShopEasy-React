@@ -22,7 +22,6 @@ import {
   ORDER_DETAILS_RESET,
   ORDER_PAY_RESET,
 } from "../constants/orderConstants";
-import { CART_ITEM_RESET } from "../constants/cartConstants";
 
 const OrderScreen = () => {
   const dispatch = useDispatch();
@@ -35,8 +34,10 @@ const OrderScreen = () => {
   const { order, loading, error } = orderDetails;
 
   const orderPay = useSelector((state) => state.orderPay);
-  const { loadin: loadingPay, success: successPay } = orderPay;
+  const { loading: loadingPay, success: successPay } = orderPay;
 
+
+  console.log(order)
   if (!loading) {
     order.itemsPrice =
       order &&
@@ -47,7 +48,6 @@ const OrderScreen = () => {
   }
 
   useEffect(() => {
-    dispatch({ type: ORDER_DETAILS_RESET });
     const addPaypalScript = async () => {
       const { data: clientId } = await axios.get("/api/config/paypal");
       const script = document.createElement("script");
@@ -76,7 +76,6 @@ const OrderScreen = () => {
     console.log(paymentResult);
 
     dispatch(payOrder(orderId, paymentResult));
-    dispatch({ type: CART_ITEM_RESET });
   };
 
   return loading ? (

@@ -173,7 +173,7 @@ const ProfileScreen = () => {
                   <Td>
                     <Button
                       as={RouterLink}
-                      to={`/order/${order._id}`}
+                      to={`/orders/${order._id}`}
                       colorScheme="teal"
                       size="sm"
                     >

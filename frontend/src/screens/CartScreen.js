@@ -109,7 +109,7 @@ const CartScreen = () => {
                       <Link
                         mx="3"
                         as={RouterLink}
-                        to={`/products/${item.product}`}
+                        to={`/product/${item.product}`}
                         fontWeight="medium"
                         fontSize="xl"
                       >

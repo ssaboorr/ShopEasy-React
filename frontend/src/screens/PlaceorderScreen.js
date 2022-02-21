@@ -14,7 +14,6 @@ import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { createOrder } from "../actions/orderActions";
 import { useEffect } from "react";
-import { ORDER_DETAILS_RESET } from "../constants/orderConstants";
 
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
@@ -47,7 +46,6 @@ const PlaceOrderScreen = () => {
   };
 
   useEffect(() => {
-    dispatch({ type: ORDER_DETAILS_RESET });
 
     if (success) {
       navigate(`/orders/${order._id}`);
