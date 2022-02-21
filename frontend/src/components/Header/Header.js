@@ -106,7 +106,7 @@ const Header = () => {
         <Flex direction="row">
           <MenuItems url="/men">
             <Flex alignItems="center" justifyContent="center" m="2">
-              <Button  bgColor="white" onClick={handleClick}>
+              <Button bgColor="white" onClick={handleClick}>
                 Men
               </Button>
             </Flex>
@@ -135,7 +135,7 @@ const Header = () => {
         alignItems="center"
       >
         {userInfo ? (
-          <Flex>
+          <Flex justifyContent="center" alignItems="center">
             <Menu>
               <MenuButton
                 as={Button}
@@ -174,6 +174,34 @@ const Header = () => {
               </Flex>
             </MenuItems>
           </Flex>
+        )}
+
+        {/* Admin Menu */}
+
+        {userInfo && userInfo.isAdmin && (
+          <Menu>
+            <MenuButton
+              ml="5"
+              color="gray.800"
+              fontWeight="semibold"
+              as={Button}
+              textTransform="uppercase"
+              _hover={{ textDecor: "none", opacity: "0.7" }}
+            >
+              Manage <Icon as={IoChevronDown} />
+            </MenuButton>
+            <MenuList>
+              <MenuItem as={RouterLink} to="/admin/userlist">
+                All Users
+              </MenuItem>
+              <MenuItem as={RouterLink} to="/admin/productlist">
+                All Products
+              </MenuItem>
+              <MenuItem as={RouterLink} to="/admin/orderlist">
+                All Orders
+              </MenuItem>
+            </MenuList>
+          </Menu>
         )}
       </Box>
     </Flex>
