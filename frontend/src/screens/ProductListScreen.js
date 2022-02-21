@@ -17,7 +17,7 @@ import {
 import { IoPencilSharp, IoTrashBinSharp, IoAdd } from "react-icons/io5";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { listProducts } from "../actions/productActions";
+import { deleteProduct, listProducts } from "../actions/productActions";
 
 const ProductListScreen = () => {
   const dispatch = useDispatch();
@@ -30,17 +30,22 @@ const ProductListScreen = () => {
 
   const { userInfo } = userLogin;
 
+  const productDelete = useSelector((state) => state.productDelete);
+  const { success: psuccess ,error:perror,loading:ploading} = productDelete;
+
+  console.log(psuccess);
+
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listProducts());
     } else {
       navigate("/login");
     }
-  }, [dispatch, navigate, userInfo]);
+  }, [dispatch, navigate, userInfo, psuccess]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure? ")) {
-      //   delete  product
+      dispatch(deleteProduct(id));
     }
   };
 
