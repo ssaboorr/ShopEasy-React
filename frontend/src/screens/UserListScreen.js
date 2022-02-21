@@ -39,9 +39,6 @@ const UserListScreen = () => {
   const { success: successDelete } = userDelete;
 
   useEffect(() => {
-  
-      dispatch({ type: USER_LIST_RESET });
-    
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
     } else {
