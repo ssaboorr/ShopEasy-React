@@ -52,7 +52,7 @@ const App = () => {
           <Route path="/payments" element={<PaymentScreen />} />
 
           <Route path="/placeorder" element={<PlaceOrderScreen />} />
-          <Route path="/orders/:id" element={<OrderScreen />} />
+          <Route path="/order/:id" element={<OrderScreen />} />
         </Routes>
       </Flex>
       <Footer />
