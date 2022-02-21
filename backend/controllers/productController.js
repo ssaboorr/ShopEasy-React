@@ -59,7 +59,7 @@ export const createProduct = asyncHandler(async (req, res) => {
   });
 
   const createdProduct = await product.save();
-  res.statusMessage(201).json(createdProduct);
+  res.status(201).json(createdProduct);
 });
 
 // @desc    Update a product
