@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
@@ -22,37 +22,46 @@ import {
 } from "react-icons/io5";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { listUsers } from "../actions/userActions";
+import { deleteUSer, listUsers } from "../actions/userActions";
+import { USER_LIST_RESET } from "../constants/userConstants";
 
 const UserListScreen = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userList = useSelector((state) => state.userList);
-
   const { loading, error, users } = userList;
 
-  console.log(users);
-  useEffect(() => {
-    dispatch(listUsers());
-  }, [dispatch]);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-  const deleteHandler = () => {
-    //   delete
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success: successDelete } = userDelete;
+
+  useEffect(() => {
+  
+      dispatch({ type: USER_LIST_RESET });
+    
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(listUsers());
+    } else {
+      navigate("/login");
+    }
+  }, [dispatch, userInfo, successDelete]);
+
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure ?")) {
+      dispatch(deleteUSer(id));
+    }
   };
   return (
-    <Flex
-      w="full"
-      mt="10"
-      m="5"
-      p="5"
-      direction="column"
-    >
+    <Flex w="full" mt="10" m="5" p="5" direction="column">
       <Box>
         <Heading as="h1" fontSize="3xl" mb="5">
           Users
         </Heading>
       </Box>
-      <Flex justifyContent="center" w="full" >
+      <Flex justifyContent="center" w="full">
         <Box>
           {loading ? (
             <Loader />
