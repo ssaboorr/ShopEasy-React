@@ -13,6 +13,8 @@ import {
   Th,
   Td,
   Box,
+  Spacer,
+  Text,
 } from "@chakra-ui/react";
 import {
   IoCheckmarkCircleSharp,
@@ -65,9 +67,18 @@ const UserListScreen = () => {
           ) : error ? (
             <Message type="error">{error}</Message>
           ) : (
-            <Box bgColor="white" rounded="lg" shadow="lg" px="5" py="5">
-              <Table variant="striped" colorScheme="gray" size="lg">
-                <Thead>
+            <Box
+              overflowX="scroll"
+              bgColor="white"
+              rounded="lg"
+              shadow="lg"
+              px="5"
+              py="5"
+              mx="5"
+              w={{ lg: "full", md: "full", base: "300px" }}
+            >
+              <Table variant="striped" colorScheme="gray">
+                <Thead w="20px">
                   <Tr>
                     <Th>ID</Th>
                     <Th>NAME</Th>
@@ -129,6 +140,7 @@ const UserListScreen = () => {
                 </Tbody>
               </Table>
             </Box>
+         
           )}
         </Box>
       </Flex>

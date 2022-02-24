@@ -84,7 +84,7 @@ function SlideEx() {
         >
           <Box width={{ base: "full", md: "auto" }} alignItems="center">
             {userInfo ? (
-              <Flex direction="column">
+              <Flex justifyContent="center" direction="column">
                 <MenuItems url="/profile">
                   <Flex alignItems="center" justifyContent="center" m="2">
                     <Icon w="4" h="4" mr="1" as={HiUser} />
@@ -101,9 +101,50 @@ function SlideEx() {
                 <MenuItems url="/login">
                   <Flex alignItems="center" justifyContent="center" m="2">
                     <Icon w="4" h="4" mr="1" as={HiLogout} />
-                    <Button bgColor="white" onClick={logoutHandler}>Logout</Button>
+                    <Button bgColor="white" onClick={logoutHandler}>
+                      Logout
+                    </Button>
                   </Flex>
                 </MenuItems>
+                {/* Admin Menu */}
+
+                {userInfo && userInfo.isAdmin && (
+                  <Menu>
+                    <MenuButton
+                      ml="5"
+                      color="gray.800"
+                      fontWeight="semibold"
+                      as={Button}
+                      textTransform="uppercase"
+                      _hover={{ textDecor: "none", opacity: "0.7" }}
+                    >
+                      Manage <Icon as={IoChevronDown} />
+                    </MenuButton>
+                    <MenuList>
+                      <MenuItem
+                        color="gray.800"
+                        as={RouterLink}
+                        to="/admin/userlist"
+                      >
+                        All Users
+                      </MenuItem>
+                      <MenuItem
+                        color="gray.800"
+                        as={RouterLink}
+                        to="/admin/productlist"
+                      >
+                        All Products
+                      </MenuItem>
+                      <MenuItem
+                        color="gray.800"
+                        as={RouterLink}
+                        to="/admin/orderlist"
+                      >
+                        All Orders
+                      </MenuItem>
+                    </MenuList>
+                  </Menu>
+                )}
               </Flex>
             ) : (
               <Flex direction="column">

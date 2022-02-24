@@ -10,6 +10,7 @@ import {
   MenuList,
   Spacer,
   MenuItem,
+  Input,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -20,10 +21,11 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 
 const ProductDisplayScreen = ({ gender }) => {
+  const [searchQuery, setSearchquery] = useState();
   const [brand, setBrand] = useState(true);
   const [type, setType] = useState(true);
-  const [brandName, setBrandName] = useState("Adidas");
-  const [categoryName, setCategoryName] = useState("Casuals");
+  // const [brandName, setBrandName] = useState("Adidas");
+  // const [categoryName, setCategoryName] = useState("Casuals");
 
   const dispatch = useDispatch();
 
@@ -31,6 +33,18 @@ const ProductDisplayScreen = ({ gender }) => {
   let { loading, error, products } = productList;
 
   products = products.filter((product) => product.gender === gender);
+
+  const filterProduct = (searchQuery) => {
+    searchQuery.toLowerCase();
+
+    products = products.filter((product) =>
+      product.name.toLowerCase().includes(searchQuery)
+    );
+  };
+
+  if (searchQuery) {
+    filterProduct(searchQuery);
+  }
 
   if (type) {
     products = products.filter((product) => product.type === "casuals");
@@ -46,6 +60,11 @@ const ProductDisplayScreen = ({ gender }) => {
   useEffect(() => {
     dispatch(listProducts());
   }, [brand, gender, type]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(searchQuery);
+  };
 
   return (
     <>
@@ -126,7 +145,20 @@ const ProductDisplayScreen = ({ gender }) => {
                   </Heading>
                 )}
 
-                {/* <SearchBar /> */}
+                <form onSubmit={submitHandler}>
+                  <Input
+                    mt="3"
+                    size="lg"
+                    width="400px"
+                    rounded="3xl"
+                    placeholder={`Search in ${gender} ${
+                      type ? "Casuals" : "Sports"
+                    }`}
+                    bgColor="white"
+                    onChange={(e) => setSearchquery(e.target.value)}
+                  />
+                </form>
+
                 <Box>
                   {type ? (
                     <Heading
@@ -170,22 +202,26 @@ const ProductDisplayScreen = ({ gender }) => {
                   justifyContent="space-between"
                   gap="2"
                 >
-                  {brand
-                    ? nike_products.map((product) => (
-                        <Products
-                          // category={category}
-                          key={product._id}
-                          product={product}
-                        />
-                        // <ProductCard key={product._id} product={product} />
-                      ))
-                    : adidas_products.map((product) => (
-                        <Products
-                          // category={category}
-                          key={product._id}
-                          product={product}
-                        />
-                      ))}
+                  {products.length === 0 ? (
+                    <Message>Not found</Message>
+                  ) : brand ? (
+                    nike_products.map((product) => (
+                      <Products
+                        // category={category}
+                        key={product._id}
+                        product={product}
+                      />
+                      // <ProductCard key={product._id} product={product} />
+                    ))
+                  ) : (
+                    adidas_products.map((product) => (
+                      <Products
+                        // category={category}
+                        key={product._id}
+                        product={product}
+                      />
+                    ))
+                  )}
                 </Grid>
               )}
             </Box>

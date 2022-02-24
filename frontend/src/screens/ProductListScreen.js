@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,6 +13,7 @@ import {
   Th,
   Td,
   Box,
+  Input,
 } from "@chakra-ui/react";
 import { IoPencilSharp, IoTrashBinSharp, IoAdd } from "react-icons/io5";
 import Loader from "../components/Loader";
@@ -27,9 +28,10 @@ import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 const ProductListScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchQuery, setSearchquery] = useState();
 
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  let { loading, error, products } = productList;
 
   const userLogin = useSelector((state) => state.userLogin);
 
@@ -46,6 +48,10 @@ const ProductListScreen = () => {
     success: successCreate,
     product,
   } = productCreate;
+
+
+
+
 
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
@@ -79,7 +85,8 @@ const ProductListScreen = () => {
           </Heading>
         </Box>
         <Box>
-          {" "}
+   
+
           <Button onClick={createProductHandler} colorScheme="teal">
             <Icon as={IoAdd} mr="2" fontSize="xl" fontWeight="bold" /> Create
             Product
@@ -92,7 +99,14 @@ const ProductListScreen = () => {
         ) : error ? (
           <Message type="error">{error}</Message>
         ) : (
-          <Box bgColor="white" rounded="lg" shadow="lg" px="5" py="5">
+          <Box
+            overflowX="scroll"
+            bgColor="white"
+            rounded="lg"
+            shadow="lg"
+            px="5"
+            py="5"
+          >
             <Table variant="striped" colorScheme="gray" size="lg">
               <Thead>
                 <Tr>

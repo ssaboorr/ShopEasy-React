@@ -127,7 +127,6 @@ const Header = () => {
           </MenuItems>
         </Flex>
       </Box>
-      <Input size="sm" width="300px" rounded="2xl" placeholder="Search" />
 
       <Box
         display={{ base: show ? "none" : "none", md: "flex" }}
