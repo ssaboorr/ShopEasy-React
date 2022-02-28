@@ -13,6 +13,11 @@ const reviewSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const productSchema = mongoose.Schema(
@@ -50,8 +55,8 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    gender : {
-      type:String,
+    gender: {
+      type: String,
     },
     description: {
       type: String,
