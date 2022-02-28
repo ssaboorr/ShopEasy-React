@@ -19,6 +19,7 @@ import {
   PRODUCT_UPDATE_RESET,
   PRODUCT_UPDATE_SUCCESS,
 } from "../constants/productConstants";
+import axios from "axios";
 
 const ProductEditScreen = () => {
   const navigate = useNavigate();
@@ -39,6 +40,8 @@ const ProductEditScreen = () => {
   const [countInStock, setCountInStock] = useState(0);
   const [gender, setGender] = useState("");
   const [type, setType] = useState("");
+
+  const [uploading, setUploading] = useState(false);
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -94,6 +97,92 @@ const ProductEditScreen = () => {
       })
     );
   };
+
+  const uploadFileHandler1 = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post("/api/uploads", formData, config);
+      setImage1(data);
+      setUploading(false);
+    } catch (error) {
+      console.log(error);
+      setUploading(false);
+    }
+  };
+
+  const uploadFileHandler2 = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post("/api/uploads", formData, config);
+      setImage2(data);
+      setUploading(false);
+    } catch (error) {
+      console.log(error);
+      setUploading(false);
+    }
+  };
+  const uploadFileHandler3 = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post("/api/uploads", formData, config);
+      setImage3(data);
+      setUploading(false);
+    } catch (error) {
+      console.log(error);
+      setUploading(false);
+    }
+  };
+  const uploadFileHandler4 = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post("/api/uploads", formData, config);
+      setImage4(data);
+      setUploading(false);
+    } catch (error) {
+      console.log(error);
+      setUploading(false);
+    }
+  };
   return (
     <>
       <Link mx="5" mt="7" as={RouterLink} to="/admin/productlist">
@@ -148,6 +237,7 @@ const ProductEditScreen = () => {
                   value={image1}
                   onChange={(e) => setImage1(e.target.value)}
                 />
+                <Input type="file" onChange={uploadFileHandler1} />
               </FormControl>
               <Spacer h="3" />
 
@@ -159,6 +249,7 @@ const ProductEditScreen = () => {
                   value={image2}
                   onChange={(e) => setImage2(e.target.value)}
                 />
+                <Input type="file" onChange={uploadFileHandler2} />
               </FormControl>
               <Spacer h="3" />
               <FormControl id="image" isRequired>
@@ -169,6 +260,7 @@ const ProductEditScreen = () => {
                   value={image3}
                   onChange={(e) => setImage3(e.target.value)}
                 />
+                <Input type="file" onChange={uploadFileHandler3} />
               </FormControl>
               <Spacer h="3" />
               <FormControl id="image" isRequired>
@@ -179,6 +271,7 @@ const ProductEditScreen = () => {
                   value={image4}
                   onChange={(e) => setImage4(e.target.value)}
                 />
+                <Input type="file" onChange={uploadFileHandler4} />
               </FormControl>
               <Spacer h="3" />
 

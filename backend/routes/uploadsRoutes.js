@@ -11,12 +11,12 @@ const storage = multer.diskStorage({
   filename(req, file, cb) {
     cb(
       null,
-      `${file.fieldname}-${Date.now()}.${path.extname(file.originalname)}`
+      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
     );
   },
 });
 
-function checkFileTypes(file, cd) {
+function checkFileTypes(file, cb) {
   const filetypes = /jpeg|png|gif|jpg/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = filetypes.test(file.mimetype);
@@ -38,3 +38,5 @@ const upload = multer({
 router.post("/", upload.single("image"), (req, res) => {
   res.send(`/${req.file.path}`);
 });
+
+export default router;

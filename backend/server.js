@@ -6,7 +6,7 @@ import productRoutes from "./routes/productRoutes.js";
 import { notFound, errorHandler } from "./middlewares/errorMiddlewares.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
-import path from "path";
+import uploadRoute from "./routes/uploadsRoutes.js";
 dotenv.config();
 connectDb();
 
@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 app.use("/api/product", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/uploads", uploadRoute);
 
 //  Paypal CLient Id
 
