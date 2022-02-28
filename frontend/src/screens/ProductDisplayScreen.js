@@ -155,6 +155,7 @@ const ProductDisplayScreen = ({ gender }) => {
                       type ? "Casuals" : "Sports"
                     }`}
                     bgColor="white"
+                    w="auto"
                     onChange={(e) => setSearchquery(e.target.value)}
                   />
                 </form>
@@ -207,16 +208,13 @@ const ProductDisplayScreen = ({ gender }) => {
                   ) : brand ? (
                     nike_products.map((product) => (
                       <Products
-                        // category={category}
                         key={product._id}
                         product={product}
                       />
-                      // <ProductCard key={product._id} product={product} />
                     ))
                   ) : (
                     adidas_products.map((product) => (
                       <Products
-                        // category={category}
                         key={product._id}
                         product={product}
                       />

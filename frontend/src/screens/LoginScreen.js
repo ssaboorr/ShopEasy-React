@@ -19,6 +19,7 @@ import {
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import { login } from "../actions/userActions";
+import { PRODUCT_DETAILS_RESET } from "../constants/productConstants";
 
 const LoginScreen = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const LoginScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+    dispatch({ type: PRODUCT_DETAILS_RESET });
   };
 
   return (

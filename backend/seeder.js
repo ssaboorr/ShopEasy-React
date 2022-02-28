@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import colors from "colors";
 import users from "./data/users.js";
 import adidas_products from "./data/new_data.js";
 import nike_products from "./data/nike_products.js";
@@ -31,10 +30,10 @@ const importData = async () => {
     await Product.insertMany(sampleProductsNike);
     await Product.insertMany(sampleProductsAdidas);
 
-    console.log("Data Imported".green.inverse);
+    console.log("Data Imported");
     process.exit();
   } catch (err) {
-    console.error(`${err}`.red.inverse);
+    console.error(`${err}`);
     process.exit(1);
   }
 };
@@ -45,10 +44,10 @@ const destroyData = async () => {
     await User.deleteMany();
     await Product.deleteMany();
 
-    console.log("Data destroyed".red.inverse);
+    console.log("Data destroyed");
     process.exit();
   } catch (err) {
-    console.error(`${err}`.red.inverse);
+    console.error(`${err}`);
     process.exit(1);
   }
 };

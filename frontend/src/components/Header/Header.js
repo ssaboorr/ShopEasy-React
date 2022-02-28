@@ -54,6 +54,7 @@ const Header = () => {
     dispatch(logout());
     dispatch({ type: USER_DETAILS_RESET });
     dispatch({ type: USER_REGISTER_RESET });
+    dispatch({ type: PRODUCT_DETAILS_RESET });
 
     navigate("/login");
   };
