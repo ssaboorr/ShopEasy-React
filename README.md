@@ -1,2 +1,0 @@
-# ShopEasy-React
- 
