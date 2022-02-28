@@ -15,11 +15,15 @@ import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getOrderDetails, payOrder } from "../actions/orderActions";
+import {
+  getOrderDetails,
+  payOrder,
+  deliverOrder,
+} from "../actions/orderActions";
 import axios from "axios";
 import { useState } from "react";
 import {
-  ORDER_DETAILS_RESET,
+  ORDER_DELIVER_RESET,
   ORDER_PAY_RESET,
 } from "../constants/orderConstants";
 
@@ -36,8 +40,13 @@ const OrderScreen = () => {
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success: successPay } = orderPay;
 
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
 
-  console.log(order)
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  console.log(order);
   if (!loading) {
     order.itemsPrice =
       order &&
@@ -62,6 +71,7 @@ const OrderScreen = () => {
 
     if (!order || successPay) {
       dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -70,13 +80,15 @@ const OrderScreen = () => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, successPay, order]);
+  }, [dispatch, orderId, successPay, order, successDeliver, navigate]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
 
     dispatch(payOrder(orderId, paymentResult));
   };
+
+  const deliverHandler = () => dispatch(deliverOrder(order));
 
   return loading ? (
     <Loader />
@@ -295,6 +307,13 @@ const OrderScreen = () => {
                 </Box>
               )}
             </Box>
+          )}
+
+          {loadingDeliver && <Loader />}
+          {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+            <Button type="button" colorScheme="teal" onClick={deliverHandler}>
+              Mark as Delivered
+            </Button>
           )}
         </Flex>
       </Grid>
