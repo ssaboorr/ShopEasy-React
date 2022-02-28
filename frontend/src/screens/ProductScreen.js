@@ -298,7 +298,7 @@ const ProductScreen = ({ type }) => {
                           justifyContent="center"
                           alignItems="center" gap="2"
                         >
-                          <Text fontSize="lg">
+                          <Text fontSize="xg">
                             <strong>{review.name}</strong> on
                           </Text>
                           <Text>
