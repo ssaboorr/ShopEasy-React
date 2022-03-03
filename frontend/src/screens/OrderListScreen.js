@@ -50,7 +50,6 @@ const OrderListScreen = () => {
             Orders
           </Heading>
         </Box>
-       
       </Flex>
       <Flex w="full" justifyContent="center">
         {loading ? (
@@ -66,64 +65,65 @@ const OrderListScreen = () => {
             px="5"
             py="5"
           >
-           <Table variant="striped" colorScheme="gray" size="lg">
-            <Thead>
-              <Tr>
-                <Th>ID</Th>
-                <Th>USER</Th>
-                <Th>DATE</Th>
-                <Th>TOTAL PRICE</Th>
-                <Th>PAID</Th>
-                <Th>DELIVERED</Th>
-                <Th></Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {orders.map((order) => (
-                <Tr key={order._id}>
-                  <Td>{order._id}</Td>
-                  <Td>{order.user && order.user.name}</Td>
-                  <Td>{order.createdAt.substring(0, 10)}</Td>
-                  <Td>₹{order.totalPrice}</Td>
-                  <Td>
-                    {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
-                    ) : (
-                      <Icon
-                        as={IoCloseCircleSharp}
-                        color="red.600"
-                        w="8"
-                        h="8"
-                      />
-                    )}
-                  </Td>
-                  <Td>
-                    {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
-                    ) : (
-                      <Icon
-                        as={IoCloseCircleSharp}
-                        color="red.600"
-                        w="8"
-                        h="8"
-                      />
-                    )}
-                  </Td>
-                  <Td>
-                    <Flex justifyContent="flex-end" alignItems="center">
-                      <Button
-                        mr="4"
-                        as={RouterLink}
-                        to={`/orders/${order._id}`}
-                        colorScheme="teal">
-                        Details
-                      </Button>
-                    </Flex>
-                  </Td>
+            <Table variant="striped" colorScheme="gray" size="lg">
+              <Thead>
+                <Tr>
+                  <Th>ID</Th>
+                  <Th>USER</Th>
+                  <Th>DATE</Th>
+                  <Th>TOTAL PRICE</Th>
+                  <Th>PAID</Th>
+                  <Th>DELIVERED</Th>
+                  <Th></Th>
                 </Tr>
-              ))}
-            </Tbody>
-          </Table>
+              </Thead>
+              <Tbody>
+                {orders.map((order) => (
+                  <Tr key={order._id}>
+                    <Td>{order._id}</Td>
+                    <Td>{order.user && order.user.name}</Td>
+                    <Td>{order.createdAt.substring(0, 10)}</Td>
+                    <Td>₹{order.totalPrice}</Td>
+                    <Td>
+                      {order.isPaid ? (
+                        order.paidAt
+                      ) : (
+                        <Icon
+                          as={IoCloseCircleSharp}
+                          color="red.600"
+                          w="8"
+                          h="8"
+                        />
+                      )}
+                    </Td>
+                    <Td>
+                      {order.isDelivered ? (
+                        order.deliveredAt
+                      ) : (
+                        <Icon
+                          as={IoCloseCircleSharp}
+                          color="red.600"
+                          w="8"
+                          h="8"
+                        />
+                      )}
+                    </Td>
+                    <Td>
+                      <Flex justifyContent="flex-end" alignItems="center">
+                        <Button
+                          mr="4"
+                          as={RouterLink}
+                          to={`/orders/${order._id}`}
+                          colorScheme="teal"
+                        >
+                          Details
+                        </Button>
+                      </Flex>
+                    </Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
           </Box>
         )}
       </Flex>
