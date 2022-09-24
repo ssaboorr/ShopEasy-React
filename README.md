@@ -21,7 +21,7 @@ Chakra UI is used for Styling.
 
 ## Demo
 
-https://shopeasy-react.herokuapp.com/men
+https://shopeasy-react.herokuapp.com
 
 ## Environment Variables
 
